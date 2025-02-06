@@ -1,0 +1,13 @@
+<map id="Flow::getName" name="Flow::getName">
+<area shape="rect" id="node1" title="Gets the name of the flow." alt="" coords="643,119,763,145"/>
+<area shape="rect" id="node2" href="$classModel.html#ab37b76dc12eb35fa4ed53d46c91cdd03" title="Adds a flow to the model." alt="" coords="493,68,587,95"/>
+<area shape="rect" id="node3" href="$classModel.html#a1c663256139153f883398d9aedf22125" title="Checks if a flow exists in the model." alt="" coords="485,119,595,145"/>
+<area shape="rect" id="node11" href="$unit__tests_8cpp.html#a63fb44fe4845e0a7bc4b57fcc843b505" title=" " alt="" coords="353,201,427,228"/>
+<area shape="rect" id="node4" href="$classModel.html#a2a340ed8a558aedcfbf7c1bdaff90c56" title="Adds a system to the model." alt="" coords="343,107,437,133"/>
+<area shape="rect" id="node5" href="$funcional__tests_8cpp.html#a943dfe0c597a01c9760c140715fed527" title=" " alt="" coords="118,5,285,32"/>
+<area shape="rect" id="node7" href="$funcional__tests_8cpp.html#a2c448ffaffdff4b03c825a01dffa6f27" title=" " alt="" coords="108,56,295,83"/>
+<area shape="rect" id="node8" href="$funcional__tests_8cpp.html#a60914db64bde71b56d69320797266c29" title=" " alt="" coords="117,107,286,133"/>
+<area shape="rect" id="node9" href="$unit__tests_8cpp.html#a096a1fcbcac63ad5666de45a7d27e581" title=" " alt="" coords="157,157,246,184"/>
+<area shape="rect" id="node6" href="$funcional_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,56,60,83"/>
+<area shape="rect" id="node10" href="$unit_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,183,60,209"/>
+</map>

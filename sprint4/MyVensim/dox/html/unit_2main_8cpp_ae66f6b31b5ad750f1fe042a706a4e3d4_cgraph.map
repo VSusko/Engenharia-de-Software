@@ -1,0 +1,28 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,309,60,336"/>
+<area shape="rect" id="node2" href="$unit__tests_8cpp.html#a63fb44fe4845e0a7bc4b57fcc843b505" title=" " alt="" coords="115,715,190,741"/>
+<area shape="rect" id="node12" href="$unit__tests_8cpp.html#a096a1fcbcac63ad5666de45a7d27e581" title=" " alt="" coords="108,309,197,336"/>
+<area shape="rect" id="node23" href="$unit__tests_8cpp.html#a40fdbf1f7ef2ac583b59a2136be55358" title=" " alt="" coords="273,56,369,83"/>
+<area shape="rect" id="node3" href="$classFlow.html#ad5e38adb558a527ec72b5e6029658b5e" title="Clears the flow data." alt="" coords="275,917,367,944"/>
+<area shape="rect" id="node4" href="$classExpression.html#ae6d41d5d6d3d87ca7b6d95431a1f2297" title="Virtual pure function to execute the flow." alt="" coords="245,563,397,589"/>
+<area shape="rect" id="node6" href="$classFlow.html#a62bbc54ff95eeb0795511519edf32077" title="Gets the name of the flow." alt="" coords="632,588,752,615"/>
+<area shape="rect" id="node7" href="$classFlow.html#a1f3858f90d141807377c2640fb5dd0fc" title="Gets the source system of the flow." alt="" coords="259,867,384,893"/>
+<area shape="rect" id="node8" href="$classFlow.html#aff8a0f8ca8dc50d37c92ab7556e172b5" title="Gets the target system of the flow." alt="" coords="261,613,382,640"/>
+<area shape="rect" id="node9" href="$classFlow.html#a245567f363022f1c8aafd15d6afc13f0" title="Sets the name of the flow." alt="" coords="262,664,381,691"/>
+<area shape="rect" id="node10" href="$classFlow.html#a4da8089ed4e652c414180252d22c8516" title="Sets the source system of the flow." alt="" coords="259,765,383,792"/>
+<area shape="rect" id="node11" href="$classFlow.html#a9efed9cf09dd73afc0fe6c1bdc3662a8" title="Sets the target system of the flow." alt="" coords="261,816,381,843"/>
+<area shape="rect" id="node5" href="$classSystem.html#aa7d17369d1034e7d8643a63f69d1901d" title="Gets the value of the system." alt="" coords="447,512,583,539"/>
+<area shape="rect" id="node13" href="$classModel.html#a2a340ed8a558aedcfbf7c1bdaff90c56" title="Adds a system to the model." alt="" coords="274,461,369,488"/>
+<area shape="rect" id="node16" href="$classModel.html#a7b8102ec95ed8796b01501bf054a3330" title="Clears the model&#39;s systems and flows." alt="" coords="270,157,373,184"/>
+<area shape="rect" id="node17" href="$classModel.html#a267351c79e852678a230ee7d49044e8b" title="Gets a flow by its name." alt="" coords="260,208,383,235"/>
+<area shape="rect" id="node18" href="$classModel.html#a65e1711255fbab5883708002ef89f773" title="Gets the name of the model." alt="" coords="256,259,387,285"/>
+<area shape="rect" id="node19" href="$classModel.html#ac47570c64d21e18bdd32fd79500733a1" title="Gets a system by its name." alt="" coords="251,309,391,336"/>
+<area shape="rect" id="node20" href="$classModel.html#afdcd018900cf5f303b06c01822a2121b" title="Removes a system from the model." alt="" coords="261,360,381,387"/>
+<area shape="rect" id="node21" href="$classModel.html#ae768a5d5f08f6c1d2c63a18f3debf9e8" title="Sets the name of the model." alt="" coords="257,411,386,437"/>
+<area shape="rect" id="node22" href="$classModel.html#a42887534a7861b517ba885826fedca70" title="Simulates the flow of values between systems over time." alt="" coords="258,107,385,133"/>
+<area shape="rect" id="node14" href="$classModel.html#a1c663256139153f883398d9aedf22125" title="Checks if a flow exists in the model." alt="" coords="460,461,569,488"/>
+<area shape="rect" id="node15" href="$classSystem.html#a47ece132a04247cd74aea11537830bd4" title="Gets the name of the system." alt="" coords="445,284,584,311"/>
+<area shape="rect" id="node24" href="$classSystem.html#a66bdd137db3fc914bbfe9518b6c71017" title="Clears the system&#39;s value." alt="" coords="459,5,570,32"/>
+<area shape="rect" id="node25" href="$classSystem.html#a2ee61def67bba90abb4eedbceb868153" title="Sets the name of the system." alt="" coords="445,56,584,83"/>
+<area shape="rect" id="node26" href="$classSystem.html#a09faccbdfb38a75d20581f095bb2cc20" title="Sets the value of the system." alt="" coords="447,107,582,133"/>
+</map>

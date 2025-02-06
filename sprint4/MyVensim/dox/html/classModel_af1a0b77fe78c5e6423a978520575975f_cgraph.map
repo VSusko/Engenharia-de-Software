@@ -1,0 +1,4 @@
+<map id="Model::exists" name="Model::exists">
+<area shape="rect" id="node1" title="Checks if a system exists in the model." alt="" coords="5,5,115,32"/>
+<area shape="rect" id="node2" href="$classSystem.html#a47ece132a04247cd74aea11537830bd4" title="Gets the name of the system." alt="" coords="163,5,301,32"/>
+</map>
