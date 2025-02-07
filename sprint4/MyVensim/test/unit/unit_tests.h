@@ -5,6 +5,8 @@
 #include "../../src/system_impl.h"
 #include "../../src/flow_impl.h"
 
+#include <cassert>
+
 class Expression : public FlowImpl {
 public:
     Expression() {}

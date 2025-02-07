@@ -2,9 +2,14 @@
 #define UNIT_SYSTEM_H
 
 #include "unit_tests.h"
-#include <cassert>
 
 
+/**
+ * @class unit_System
+ * @brief Class that holds all unitary tests for the System class
+ * 
+ * 
+ */
 class unit_System
 {
     public:

@@ -12,6 +12,8 @@
  */
 class FlowImpl : public Flow
 {
+    friend class unit_Flow;
+
     protected:
         string name; /**< Flow name */
         System* source; /**< Pointer for the source system */

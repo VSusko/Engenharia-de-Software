@@ -1,29 +1,29 @@
 #include "unit_Model.h"
 
-//Constructor with name and 2 systems test
-void testModelDefaultConstructor() {
+
+void unit_Model::testModelDefaultConstructor() {
     ModelImpl* model1 = new ModelImpl();
     assert(model1->getName() == "");
     delete model1;
 }
 
-//Constructor with name 
-void testModelParameterizedConstructor() {
+
+void unit_Model::testModelParameterizedConstructor() {
     ModelImpl* model2 = new ModelImpl("model2");
     assert(model2->getName() == "model2");
     delete model2;
 }
 
-//Setters test
-void testModelSetters() {
+
+void unit_Model::void testModelSetters() {
     ModelImpl* model1 = new ModelImpl();
     model1->setName("model1");
     assert(model1->getName() == "model1");
     delete model1;
 }
 
-//Add test
-void testModelAdd() {
+
+void unit_Model::testModelAdd() {
     ModelImpl* model1 = new ModelImpl();
     SystemImpl* p1 = new SystemImpl("p1", 100);
     model1->add(p1);
@@ -32,8 +32,8 @@ void testModelAdd() {
     delete p1;
 }
 
-//Simulate test
-void testModelSimulate() {
+
+void unit_Model::testModelSimulate() {
     ModelImpl* model1 = new ModelImpl();
     SystemImpl* p1 = new SystemImpl("p1", 100);
     SystemImpl* p2 = new SystemImpl("p2", 5);
@@ -50,8 +50,8 @@ void testModelSimulate() {
     delete flow1;
 }
 
-// Running all tests
-void runModelTests() {
+
+void unit_Model::runModelTests() {
     testModelDefaultConstructor();
     testModelParameterizedConstructor();
     testModelSetters();

@@ -7,6 +7,12 @@
 
 using namespace std;
 
+/**
+ * @class System
+ * @brief Interface for System class
+ * 
+ * 
+ */
 class System
 {
     public:

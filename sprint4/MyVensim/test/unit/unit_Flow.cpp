@@ -1,7 +1,6 @@
 #include "unit_Flow.h"
 
-//Default constructor test
-void testFlowDefaultConstructor() {
+void unit_Flow::testFlowDefaultConstructor() {
     Expression* flow1 = new Expression();
     assert(flow1->getName() == "");
     assert(flow1->getSource() == NULL);
@@ -9,8 +8,7 @@ void testFlowDefaultConstructor() {
     delete flow1;
 }
 
-//Constructor with name and 2 systems test
-void testFlowParameterizedConstructor() {
+void unit_Flow::testFlowParameterizedConstructor() {
     System* p1 = new SystemImpl("p1", 0);
     System* p2 = new SystemImpl("p2", 100);
     Expression* flow2 = new Expression("flow2", p1, p2);
@@ -22,8 +20,8 @@ void testFlowParameterizedConstructor() {
     delete p2;
 }
 
-//Setters test
-void testFlowSetters() {
+
+void unit_Flow::testFlowSetters() {
     System* p1 = new SystemImpl("p1", 0);
     System* p2 = new SystemImpl("p2", 100);
     Expression* flow1 = new Expression();
@@ -38,8 +36,8 @@ void testFlowSetters() {
     delete p2;
 }
 
-//Copy constructor test
-void testFlowCopyConstructor() {
+
+void unit_Flow::testFlowCopyConstructor() {
     System* p1 = new SystemImpl("p1", 0);
     System* p2 = new SystemImpl("p2", 100);
     Expression* flow2 = new Expression("flow2", p1, p2);
@@ -53,8 +51,8 @@ void testFlowCopyConstructor() {
     delete p2;
 }
 
-//Copy operator test
-void testFlowCopyOperator() {
+
+void unit_Flow::testFlowCopyOperator() {
     System* p1 = new SystemImpl("p1", 0);
     System* p2 = new SystemImpl("p2", 100);
     Expression* flow1 = new Expression();
@@ -69,8 +67,8 @@ void testFlowCopyOperator() {
     delete p2;
 }
 
-//Clear test
-void testFlowClear() {
+
+void unit_Flow::testFlowClear() {
     SystemImpl* p1 = new SystemImpl("p1", 0);
     SystemImpl* p2 = new SystemImpl("p2", 100);
     Expression* flow1 = new Expression("flow1", p1, p2);
@@ -82,8 +80,8 @@ void testFlowClear() {
     delete p2;
 }
 
-// Running all tests
-void runFlowTests() {
+
+void unit_Flow::runFlowTests() {
     testFlowDefaultConstructor();
     testFlowParameterizedConstructor();
     testFlowSetters();

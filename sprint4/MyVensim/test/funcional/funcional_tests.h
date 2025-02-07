@@ -6,6 +6,14 @@
 #include "../../src/flow_impl.h"
 #define _approximate(_X)    (round(10000.0 * (_X)) / 10000.0)
 
+//===================Flow Derived Classes===================//
+
+/**
+ * @class Exponential
+ * @brief Derived class from Flow that will do the Exponential functional test
+ * 
+ * 
+ */
 class Exponential : public FlowImpl {
     public:
         Exponential(){}
@@ -13,7 +21,12 @@ class Exponential : public FlowImpl {
         virtual double execute();
 };
 
-
+/**
+ * @class Logistical
+ * @brief Derived class from Flow that will do the Logistical functional test
+ * 
+ * 
+ */
 class Logistical : public FlowImpl {
     public:
         Logistical(){}
@@ -21,6 +34,12 @@ class Logistical : public FlowImpl {
         virtual double execute();
 };
 
+/**
+ * @class Complex
+ * @brief Derived class from Flow that will do the Complex functional test
+ * 
+ * 
+ */
 class Complex : public FlowImpl {
     public:
         Complex(){}
@@ -28,9 +47,24 @@ class Complex : public FlowImpl {
         virtual double execute();
 };
 
+//===================Functional Test functions===================//
 
+/**
+ * @brief Function that makes the exponential test
+ * 
+ */
 void exponentialFuncionalTest();
+
+/**
+ * @brief Function that makes the logistical test
+ * 
+ */
 void logisticalFuncionalTest();
+
+/**
+ * @brief Function that makes the complex test
+ * 
+ */
 void complexFuncionalTest();
 
 #endif

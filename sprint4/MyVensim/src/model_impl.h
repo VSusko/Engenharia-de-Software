@@ -13,6 +13,8 @@
  */
 class ModelImpl : public Model
 {
+    friend class unit_Model;
+
     private:
         string name; /**< Name of the model */
         vector<System*> systems; /**< List of systems in the model */

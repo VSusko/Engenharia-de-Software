@@ -3,6 +3,12 @@
 
 #include "flow.h"
 
+/**
+ * @class Model
+ * @brief Interface for Model class
+ * 
+ * 
+ */
 class Model
 {
     public:

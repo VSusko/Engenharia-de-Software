@@ -2,6 +2,8 @@
 #include <cassert>
 #include <cmath>
 
+//===================Execute overriding===================//
+
 //Execute for the exponential class
 double Exponential::execute()
 {
@@ -20,7 +22,7 @@ double Complex::execute()
     return (source->getValue() * 0.01);
 }
 
-//Exponential test
+
 void exponentialFuncionalTest()
 {
     System* pop1 = new SystemImpl("pop1", 100);
@@ -44,7 +46,6 @@ void exponentialFuncionalTest()
     delete flow;
 }
 
-//Logical test
 void logisticalFuncionalTest()
 {
     System* p1 = new SystemImpl("p1", 100);
@@ -68,7 +69,6 @@ void logisticalFuncionalTest()
     delete flow;
 }
 
-//Complex test
 void complexFuncionalTest()
 {
     System* q1 = new SystemImpl("q1", 100);
