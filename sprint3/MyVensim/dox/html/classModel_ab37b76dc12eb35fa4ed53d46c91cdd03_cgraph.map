@@ -1,0 +1,5 @@
+<map id="Model::add" name="Model::add">
+<area shape="rect" id="node1" title="Adds a flow to the model." alt="" coords="5,31,100,57"/>
+<area shape="rect" id="node2" href="$classModel.html#a1c663256139153f883398d9aedf22125" title="Checks if a flow exists in the model." alt="" coords="148,5,257,32"/>
+<area shape="rect" id="node3" href="$classFlow.html#a62bbc54ff95eeb0795511519edf32077" title="Gets the name of the flow." alt="" coords="305,31,425,57"/>
+</map>

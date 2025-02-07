@@ -1,0 +1,7 @@
+<map id="Flow" name="Flow">
+<area shape="rect" id="node1" title="Changes the current state of a system by a mathematic expression. Needs inheritance to be used." alt="" coords="212,5,325,288"/>
+<area shape="rect" id="node2" href="$classComplex.html" title=" " alt="" coords="5,336,111,443"/>
+<area shape="rect" id="node3" href="$classExponential.html" title=" " alt="" coords="135,336,259,443"/>
+<area shape="rect" id="node4" href="$classExpression.html" title=" " alt="" coords="283,336,401,443"/>
+<area shape="rect" id="node5" href="$classLogistical.html" title=" " alt="" coords="426,336,535,443"/>
+</map>
