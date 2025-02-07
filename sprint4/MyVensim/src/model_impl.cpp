@@ -1,56 +1,39 @@
 #include "model_impl.h"
 
-//Default constructor
+//===================Constructors===================//
+
 ModelImpl::ModelImpl() {}
 
-//Name construtor
 ModelImpl::ModelImpl(const string name)
 {
     this->name = name;
 }
 
-//Getters and setters
-void ModelImpl::setName(string name)
+ModelImpl::ModelImpl(const ModelImpl &other)
 {
-    this->name = name;
+    this->name = other.name;
+    this->flows.insert(flows.begin(), other.flows.begin(), other.flows.end());
+    this->systems.insert(systems.begin(), other.systems.begin(), other.systems.end());
 }
 
-string ModelImpl::getName() const
+ModelImpl ModelImpl::operator=(const ModelImpl &other)
 {
-    return this->name;
-}
-
-bool ModelImpl::exists(System* s)
-{
-    for(auto system : systems){
-        if(system->getName() == s->getName())
-            return true;
-    }
-    /*
-    for(auto flow : flows){
-        if(flow->getName() == s->getName())
-            return true;
-    }
-    */
-    return false;
-}
-
-bool ModelImpl::exists(Flow* f)
-{
-    /*
-    for(auto system : systems){
-        if(system->getName() == f->getName())
-            return true;
-    }
-    */
-    
-    for(auto flow : flows){
-        if(flow->getName() == f->getName())
-            return true;
+    if(this == &other){
+        return *this; 
     }
 
-    return false;
+    this->clear();
+    this->name = other.name;
+    this->flows.insert(flows.begin(), other.flows.begin(), other.flows.end());
+    this->systems.insert(systems.begin(), other.systems.begin(), other.systems.end());
+
+    return *this;
 }
+
+//===================Getters and Setters===================//
+
+void ModelImpl::setName(string name) { this->name = name; }
+string ModelImpl::getName() const { return this->name; }
 
 System* ModelImpl::getSystem(const string name) const
 {
@@ -70,8 +53,43 @@ Flow* ModelImpl::getFlow(const string name) const
     return NULL;
 }
 
+//===================Class functions===================//
 
-//Add function for systems
+bool ModelImpl::exists(System* s)
+{
+    // Searching a system with same name
+    for(auto system : systems)
+    {
+        if(system->getName() == s->getName())
+            return true;
+    }
+
+    // Searching a flow with same name
+    for(auto flow : flows){
+        if(flow->getName() == s->getName())
+            return true;
+    }
+
+    return false;
+}
+
+bool ModelImpl::exists(Flow* f)
+{
+    // Searching a system with same name
+    for(auto system : systems){
+        if(system->getName() == f->getName())
+            return true;
+    }
+
+    // Searching a flow with same name
+    for(auto flow : flows){
+        if(flow->getName() == f->getName())
+            return true;
+    }
+
+    return false;
+}
+
 bool ModelImpl::add(System* s)
 {
     if(this->exists(s))
@@ -84,7 +102,7 @@ bool ModelImpl::add(System* s)
     return true;
 }
 
-//Add function for flows
+
 bool ModelImpl::add(Flow* f)
 {
     if(this->exists(f))
@@ -97,7 +115,6 @@ bool ModelImpl::add(Flow* f)
     return true;
 }
 
-//Remove function for flows
 bool ModelImpl::remove(Flow* f)
 {
     for(auto iter = flows.begin(); iter != flows.end(); iter++)
@@ -112,7 +129,6 @@ bool ModelImpl::remove(Flow* f)
     return false;
 }
 
-//Remove function for systems
 bool ModelImpl::remove(System* f)
 {
     for(auto iter = systems.begin(); iter != systems.end(); iter++)
@@ -127,14 +143,12 @@ bool ModelImpl::remove(System* f)
     return false;
 }
 
-//Clear function
 void ModelImpl::clear()
 {
     this->flows.clear();
     this->systems.clear();
 }
 
-//Report function
 void ModelImpl::report()
 {
     for(auto system : systems)
@@ -143,7 +157,6 @@ void ModelImpl::report()
     }
 }
 
-//Simulate function
 void ModelImpl::simulate(const double start, const double end, const double lapse)
 {
     double* expressions_results = new double[flows.size()];

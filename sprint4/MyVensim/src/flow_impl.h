@@ -18,24 +18,69 @@ class FlowImpl : public Flow
         System* target; /**< Pointer for the target system */
         
     public:
-        //Default construtor 
+    
+        //===================Constructors===================//
+        
+        /**
+         * @brief Standard constructor
+         * 
+         * Initializes the flow with an empty name and null pointers for the source
+         * and target systems.
+         */
         FlowImpl();
 
-        //Constructor with name and 2 systems
+        /**
+         * @brief Constructor with name and two systems
+         * 
+         * @param name Name of the flow
+         * @param _source Pointer to the source system
+         * @param _target Pointer to the target system
+         */
         FlowImpl(string _name, System* _source, System* _target);
 
-        //Copy constructor
+        /**
+         * @brief Copy constructor
+         * 
+         * Creates a new Flow object by copying the data from the provided object.
+         * 
+         * @param other Flow object to be copied
+         */
         FlowImpl(const FlowImpl &other);
         
         //Destructor
         virtual ~FlowImpl(){};
 
-        //Copy operator overload
+        /**
+         * @brief Assignment operator overload
+         * 
+         * Copies the data from one Flow object to another, ensuring no self-assignment occurs.
+         * 
+         * @param other Flow object to be copied
+         * @return Reference to the Flow object after assignment
+         */
         FlowImpl& operator=(const FlowImpl &other);
 
-        //Getters and Setters
+        //===================Getters and Setters===================//
+
+        /**
+         * @brief Sets the target system of the flow
+         * 
+         * @param s Pointer to the target system
+         */
         void setTarget(System* s) override;
+
+        /**
+         * @brief Sets the source system of the flow
+         * 
+         * @param s Pointer to the source system
+         */
         void setSource(System* s) override;
+
+        /**
+         * @brief Sets the name of the flow
+         * 
+         * @param _string Name of the flow
+         */
         void setName(string _name) override;
 
         /**
@@ -59,7 +104,8 @@ class FlowImpl : public Flow
          */
         string getName() const override;
         
-        //Class functions
+        //===================Class functions===================//
+        
         virtual double execute() = 0;
         
         /**
