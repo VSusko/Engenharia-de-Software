@@ -6,6 +6,7 @@
 #include "../../src/flow_impl.h"
 
 #include <cassert>
+#include <cmath>
 
 class Expression : public FlowImpl {
 public:

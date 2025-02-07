@@ -15,7 +15,7 @@ void unit_Model::testModelParameterizedConstructor() {
 }
 
 
-void unit_Model::void testModelSetters() {
+void unit_Model::testModelSetters() {
     ModelImpl* model1 = new ModelImpl();
     model1->setName("model1");
     assert(model1->getName() == "model1");

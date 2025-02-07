@@ -1,116 +1,53 @@
-#======== Variables ========
+# Diretórios
+SRC_DIR 		:= src/
+F_TEST_DIR 		:= test/funcional/
+U_TEST_DIR 		:= test/unit/
+BIN_DIR 		:= bin/
 
-#----[Compilation]
-compiler = g++
-flags = -g -Wall -O2
-optional_settings = 
+CXX 			:= g++
+CXXFLAGS 		:= -std=c++17 -Wall -g -I"$(BIN_DIR)"
+LDFLAGS 		:= 
 
-#----[Paths]
-binPath = bin
-executablesPath = $(binPath)
-objectsPath = $(binPath)
+EXEC_FUNC 		:= $(BIN_DIR)ftest.exe
+EXEC_UNIT 		:= $(BIN_DIR)utest.exe
 
-sourcePath = src
-unitTestsPath = test/unit
-funcionalTestsPath = test/funcional
-headersPath = $(sourcePath)
+# Arquivos fonte
+SRC_FILES 		:= $(wildcard $(SRC_DIR)*.cpp)
+F_TEST_FILES 	:= $(wildcard $(F_TEST_DIR)*.cpp)
+U_TEST_FILES	:= $(wildcard $(U_TEST_DIR)*.cpp)
+objetos			:= $(foreach object,$(subst .cpp,.o,$(subst $(SRC_DIR),,$(SRC_FILES))),$(BIN_DIR)$(object))
 
-#----[Files list with path]
-Path_sourceFiles = $(wildcard $(sourcePath)/*.cpp)
-Path_unitTestFiles = $(wildcard $(unitTestsPath)/*.cpp)
-Path_funcionalTestFiles = $(wildcard $(funcionalTestsPath)/*.cpp)
+biblioteca_nome	:= bibvictor.lib
+biblioteca		:= $(BIN_DIR)$(biblioteca_nome)
 
-#----[Object files]
-Path_objectFiles = $(patsubst $(sourcePath)/%.cpp, $(objectsPath)/%.o, $(Path_sourceFiles))
-Path_unitObjectFiles = $(patsubst $(unitTestsPath)/%.cpp, $(objectsPath)/unit_%.o, $(Path_unitTestFiles))
-Path_funcObjectFiles = $(patsubst $(funcionalTestsPath)/%.cpp, $(objectsPath)/func_%.o, $(Path_funcionalTestFiles))
+ftest			:= $(BIN_DIR)ftest.exe
+utest			:= $(BIN_DIR)utest.exe
 
-#----[Targets]
-mainExecutable = $(executablesPath)/MyVensim.exe
-unitTestExecutable = $(executablesPath)/unit_tests.exe
-funcTestExecutable = $(executablesPath)/func_tests.exe
+build_and_run: build 
 
-#======== OS-Manager ========
+build: $(ftest) $(utest)
+	@echo Tudo certo.
+	
 
-ifeq ($(OS), Windows_NT)
-mkdir = if not exist "$(1)" mkdir "$(1)"
-cmd_remove = del /q "$(1)"
-else
-mkdir = mkdir -p $(1)
-cmd_remove = rm -f $(1)
-endif
+$(ftest): $(biblioteca) $(F_TEST_FILES)
+	@g++ $(F_TEST_DIR)*.cpp -o $@ -L"$(BIN_DIR)" -l:"$(biblioteca_nome)" $(CXXFLAGS)
 
-#======== Directories Creation ========
-$(binPath):
-	@$(call mkdir,$(binPath))
+$(utest): $(biblioteca) $(U_TEST_FILES)
+	@g++ $(U_TEST_DIR)*.cpp -o $@ -L"$(BIN_DIR)" -l:"$(biblioteca_nome)" $(CXXFLAGS)
 
-#======== Building Targets ========
+# g++ $(CXXFLAGS) -shared -o $@ $(objetos)
+$(biblioteca): $(objetos)
+	@ar cr $@ $^ 
 
-.PHONY: build
-build: $(binPath) $(mainExecutable)
-	@echo Projeto principal compilado.
+$(BIN_DIR)%.o: $(SRC_DIR)%.cpp
+	@g++ -c $^ -o $@ $(CXXFLAGS)
 
-# Compilação do projeto principal
-$(mainExecutable): $(filter-out $(objectsPath)/unit_main.o $(objectsPath)/func_main.o, $(Path_objectFiles))
-	$(compiler) $^ -o $@ $(flags)
-
-$(objectsPath)/%.o: $(sourcePath)/%.cpp
-	$(compiler) -c $< -o $@ -I $(headersPath) $(optional_settings) $(flags)
-
-#======== Unit Tests ========
-
-.PHONY: unit_tests
-unit_tests: $(unitTestExecutable)
-	@echo Testes unitários compilados.
-
-# Compilação dos testes unitários
-$(unitTestExecutable): $(Path_unitObjectFiles) $(filter-out $(objectsPath)/main.o, $(Path_objectFiles))
-	$(compiler) $^ -o $@ $(flags)
-
-$(objectsPath)/unit_%.o: $(unitTestsPath)/%.cpp
-	$(compiler) -c $< -o $@ -I $(headersPath) $(optional_settings) $(flags)
-
-#======== Functional Tests ========
-
-.PHONY: func_tests
-func_tests: $(funcTestExecutable)
-	@echo Testes funcionais compilados.
-
-# Compilação dos testes funcionais
-$(funcTestExecutable): $(Path_funcObjectFiles) $(filter-out $(objectsPath)/main.o, $(Path_objectFiles))
-	$(compiler) $^ -o $@ $(flags)
-
-$(objectsPath)/func_%.o: $(funcionalTestsPath)/%.cpp
-	$(compiler) -c $< -o $@ -I $(headersPath) $(optional_settings) $(flags)
-
-#======== Clean ========
-
-.PHONY: clean
+# Limpeza dos arquivos objeto e executáveis
 clean:
-	@$(call cmd_remove,$(objectsPath)/*.o)
-	@$(call cmd_remove,$(executablesPath)/*.exe)
-	@echo Objetos e executáveis limpos.
+	@rm -f $(BIN_DIR)/*.o $(EXEC)
 
-.PHONY: clean-all
-clean-all: clean
-	@$(call cmd_remove,$(objectsPath)/*)
-	@echo Todos os arquivos em bin limpos.
+run_functional: $(EXEC_FUNC)
+	@./$(EXEC_FUNC)
 
-#======== Run ========
-
-.PHONY: run
-run: build
-	@./$(mainExecutable)
-
-.PHONY: run-unit
-run-unit: unit_tests
-	@./$(unitTestExecutable)
-
-.PHONY: run-func
-run-func: func_tests
-	@./$(funcTestExecutable)
-
-#======== Rebuild ========
-
-.PHONY: rebuild
-rebuild: clean build
+run_unit: $(EXEC_UNIT)
+	@./$(EXEC_UNIT)

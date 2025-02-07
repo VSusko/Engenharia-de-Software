@@ -69,7 +69,7 @@ class unit_Flow
          * test suite to ensure that all functionalities work as intended.
          */
         void runFlowTests();
-}
+};
 
 
 

@@ -2,7 +2,7 @@
 #define UNIT_MODEL_H
 
 #include "unit_tests.h"
-#include <cmath>
+
 
 /**
  * @class unit_Model
@@ -61,7 +61,7 @@ class unit_Model
          * test suite to ensure that all functionalities are working as expected.
          */
         void runModelTests();
-}
+};
 
 
 #endif // UNIT_MODEL_H
