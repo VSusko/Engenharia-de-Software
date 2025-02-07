@@ -36,6 +36,7 @@ class SystemImpl : public System
         //Class Functions
         void clear();
 
+        friend class unit_System;
 };
 
 #endif

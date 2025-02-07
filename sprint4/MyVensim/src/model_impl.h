@@ -3,8 +3,6 @@
 
 #include "model.h"
 
-using namespace std;
-
 class ModelImpl : public Model
 {
     private:
@@ -15,18 +13,12 @@ class ModelImpl : public Model
     public:
         //Default constructor
         ModelImpl();
-        
-        //Copy construtor
-        ModelImpl(const ModelImpl &other);
 
         //Name construtor
         ModelImpl(const string name);
 
         //Destructor
         virtual ~ModelImpl(){};
-
-        //Copy operator overload
-        ModelImpl& operator=(const ModelImpl &other);
 
         //Getters and Setters
         void setName(string string);

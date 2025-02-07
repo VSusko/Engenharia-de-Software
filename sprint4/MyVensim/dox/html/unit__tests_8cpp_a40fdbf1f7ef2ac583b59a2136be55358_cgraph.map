@@ -1,8 +1,0 @@
-<map id="systemTest" name="systemTest">
-<area shape="rect" id="node1" title=" " alt="" coords="5,107,101,133"/>
-<area shape="rect" id="node2" href="$classSystem.html#a66bdd137db3fc914bbfe9518b6c71017" title="Clears the system&#39;s value." alt="" coords="163,5,274,32"/>
-<area shape="rect" id="node3" href="$classSystem.html#a47ece132a04247cd74aea11537830bd4" title="Gets the name of the system." alt="" coords="149,56,288,83"/>
-<area shape="rect" id="node4" href="$classSystem.html#aa7d17369d1034e7d8643a63f69d1901d" title="Gets the value of the system." alt="" coords="151,107,287,133"/>
-<area shape="rect" id="node5" href="$classSystem.html#a2ee61def67bba90abb4eedbceb868153" title="Sets the name of the system." alt="" coords="149,157,288,184"/>
-<area shape="rect" id="node6" href="$classSystem.html#a09faccbdfb38a75d20581f095bb2cc20" title="Sets the value of the system." alt="" coords="151,208,286,235"/>
-</map>

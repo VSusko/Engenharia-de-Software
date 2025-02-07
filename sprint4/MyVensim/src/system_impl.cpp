@@ -1,12 +1,9 @@
 #include <iostream>
 #include "system_impl.h"
 
+
 //Default construtor
-SystemImpl::SystemImpl()
-{ 
-    this->name = "";
-    this->value = 0;
-}
+SystemImpl::SystemImpl() {}
 
 //Constructor with name and 2 systems
 SystemImpl::SystemImpl(const string name, const double value)

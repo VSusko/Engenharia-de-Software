@@ -1,37 +1,12 @@
 #include "model_impl.h"
 
 //Default constructor
-ModelImpl::ModelImpl()
-{
-    this->name = "";
-}
+ModelImpl::ModelImpl() {}
 
 //Name construtor
 ModelImpl::ModelImpl(const string name)
 {
     this->name = name;
-}
-
-//Copy constructor
-ModelImpl::ModelImpl(const ModelImpl &other)
-{
-    this->name = other.name;
-    this->flows.insert(flows.begin(), other.flows.begin(), other.flows.end());
-    this->systems.insert(systems.begin(), other.systems.begin(), other.systems.end());
-}
-
-//Copy operator overload
-ModelImpl& ModelImpl::operator=(const ModelImpl &other)
-{
-    if (this != &other)
-    {
-        this->clear();
-        this->name = other.name;
-        this->flows.insert(flows.begin(), other.flows.begin(), other.flows.end());
-        this->systems.insert(systems.begin(), other.systems.begin(), other.systems.end());
-    }
-    
-    return *this;
 }
 
 //Getters and setters
@@ -51,21 +26,23 @@ bool ModelImpl::exists(System* s)
         if(system->getName() == s->getName())
             return true;
     }
-    
+    /*
     for(auto flow : flows){
         if(flow->getName() == s->getName())
             return true;
     }
-
+    */
     return false;
 }
 
 bool ModelImpl::exists(Flow* f)
 {
+    /*
     for(auto system : systems){
         if(system->getName() == f->getName())
             return true;
     }
+    */
     
     for(auto flow : flows){
         if(flow->getName() == f->getName())
@@ -75,7 +52,7 @@ bool ModelImpl::exists(Flow* f)
     return false;
 }
 
-System* ModelImpl::getSystem(const string name)
+System* ModelImpl::getSystem(const string name) const
 {
     for(auto system : systems){
         if(system->getName() == name)
@@ -84,7 +61,7 @@ System* ModelImpl::getSystem(const string name)
     return NULL;
 }
 
-Flow* ModelImpl::getFlow(const string name)
+Flow* ModelImpl::getFlow(const string name) const
 {
     for(auto flow : flows){
         if(flow->getName() == name)

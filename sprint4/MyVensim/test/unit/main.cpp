@@ -12,7 +12,8 @@
 
 int main()
 {
-    runSystemTests();
+    unit_System unit_system;
+    unit_system.runSystemTests();
     cout << "System test: OK" << endl;
 
     runFlowTests();

@@ -1,9 +1,9 @@
 <map id="logisticalFuncionalTest" name="logisticalFuncionalTest">
 <area shape="rect" id="node1" title=" " alt="" coords="5,81,175,108"/>
-<area shape="rect" id="node2" href="$classModel.html#a2a340ed8a558aedcfbf7c1bdaff90c56" title="Adds a system to the model." alt="" coords="243,31,338,57"/>
-<area shape="rect" id="node6" href="$classSystem.html#aa7d17369d1034e7d8643a63f69d1901d" title="Gets the value of the system." alt="" coords="223,81,359,108"/>
-<area shape="rect" id="node7" href="$classModel.html#a42887534a7861b517ba885826fedca70" title="Simulates the flow of values between systems over time." alt="" coords="227,132,354,159"/>
-<area shape="rect" id="node3" href="$classModel.html#a1c663256139153f883398d9aedf22125" title="Checks if a flow exists in the model." alt="" coords="421,5,531,32"/>
-<area shape="rect" id="node5" href="$classSystem.html#a47ece132a04247cd74aea11537830bd4" title="Gets the name of the system." alt="" coords="407,56,545,83"/>
-<area shape="rect" id="node4" href="$classFlow.html#a62bbc54ff95eeb0795511519edf32077" title="Gets the name of the flow." alt="" coords="593,5,713,32"/>
+<area shape="rect" id="node2" href="$classModelImpl.html#a75824d3eb5f2e250616621b3ca8f081d" title=" " alt="" coords="239,31,362,57"/>
+<area shape="rect" id="node6" href="$classSystem.html#a41b673faa6c199eb8e4f204639fab4f2" title=" " alt="" coords="233,81,369,108"/>
+<area shape="rect" id="node7" href="$classModelImpl.html#a372d285bc159cbbd8390e5f7af9a5874" title=" " alt="" coords="223,132,379,159"/>
+<area shape="rect" id="node3" href="$classModelImpl.html#ab815964457d5cd0fdd99775a9ca9daae" title=" " alt="" coords="427,5,565,32"/>
+<area shape="rect" id="node5" href="$classSystem.html#ab4f23c21832d6bbef462a5a20b296912" title=" " alt="" coords="427,56,565,83"/>
+<area shape="rect" id="node4" href="$classFlow.html#aa91a8025b6dbb27ee5137c7c9ad0c564" title=" " alt="" coords="613,5,733,32"/>
 </map>

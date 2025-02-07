@@ -1,4 +1,5 @@
 <map id="Exponential" name="Exponential">
-<area shape="rect" id="node1" title=" " alt="" coords="5,336,129,443"/>
-<area shape="rect" id="node2" href="$classFlow.html" title="Changes the current state of a system by a mathematic expression. Needs inheritance to be used." alt="" coords="11,5,124,288"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,579,129,685"/>
+<area shape="rect" id="node2" href="$classFlowImpl.html" title=" " alt="" coords="8,248,127,531"/>
+<area shape="rect" id="node3" href="$classFlow.html" title=" " alt="" coords="11,5,123,200"/>
 </map>

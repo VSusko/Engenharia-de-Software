@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Vensim: /mnt/d/Usuario/Users/Usuario/Desktop/Disciplinas_UFOP/Eng Software/sprint3/MyVensim/test/unit/unit_tests.h Source File</title>
+<title>My Vensim: /mnt/d/Usuario/Users/Usuario/Desktop/Disciplinas_UFOP/Eng Software/sprint4/alt/MyVensim/test/unit/unit_tests.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,33 +89,30 @@ $(document).ready(function(){initNavTree('unit__tests_8h_source.html',''); initR
 <a href="unit__tests_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef UNIT_TEST_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define UNIT_TEST_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../src/model.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../../src/system.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../src/flow.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../src/model_impl.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../../src/system_impl.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../../src/flow_impl.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classExpression.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classExpression.html">Expression</a> : <span class="keyword">public</span> <a class="code" href="classFlow.html">Flow</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classExpression.html#afcf87716bf0abfe8d414c92529e1564a">   11</a></span>&#160;        <a class="code" href="classExpression.html#afcf87716bf0abfe8d414c92529e1564a">Expression</a>(){}</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classExpression.html#a7f2eda4b053d741300aa8fe8fe35e50b">   12</a></span>&#160;        <a class="code" href="classExpression.html#a7f2eda4b053d741300aa8fe8fe35e50b">Expression</a>(<span class="keywordtype">string</span> _name, <a class="code" href="classSystem.html">System</a>* _source, <a class="code" href="classSystem.html">System</a>* _target) : <a class="code" href="classFlow.html">Flow</a>(_name,_source,_target){}</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="classExpression.html#ae6d41d5d6d3d87ca7b6d95431a1f2297">execute</a>();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;};</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit__tests_8h.html#a40fdbf1f7ef2ac583b59a2136be55358">systemTest</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit__tests_8h.html#a63fb44fe4845e0a7bc4b57fcc843b505">flowTest</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit__tests_8h.html#a096a1fcbcac63ad5666de45a7d27e581">modelTest</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassExpression_html"><div class="ttname"><a href="classExpression.html">Expression</a></div><div class="ttdef"><b>Definition:</b> unit_tests.h:9</div></div>
-<div class="ttc" id="aclassExpression_html_a7f2eda4b053d741300aa8fe8fe35e50b"><div class="ttname"><a href="classExpression.html#a7f2eda4b053d741300aa8fe8fe35e50b">Expression::Expression</a></div><div class="ttdeci">Expression(string _name, System *_source, System *_target)</div><div class="ttdef"><b>Definition:</b> unit_tests.h:12</div></div>
-<div class="ttc" id="aclassExpression_html_ae6d41d5d6d3d87ca7b6d95431a1f2297"><div class="ttname"><a href="classExpression.html#ae6d41d5d6d3d87ca7b6d95431a1f2297">Expression::execute</a></div><div class="ttdeci">virtual double execute()</div><div class="ttdoc">Virtual pure function to execute the flow.</div><div class="ttdef"><b>Definition:</b> unit_tests.cpp:6</div></div>
-<div class="ttc" id="aclassExpression_html_afcf87716bf0abfe8d414c92529e1564a"><div class="ttname"><a href="classExpression.html#afcf87716bf0abfe8d414c92529e1564a">Expression::Expression</a></div><div class="ttdeci">Expression()</div><div class="ttdef"><b>Definition:</b> unit_tests.h:11</div></div>
-<div class="ttc" id="aclassFlow_html"><div class="ttname"><a href="classFlow.html">Flow</a></div><div class="ttdoc">Changes the current state of a system by a mathematic expression. Needs inheritance to be used.</div><div class="ttdef"><b>Definition:</b> flow.h:13</div></div>
-<div class="ttc" id="aclassSystem_html"><div class="ttname"><a href="classSystem.html">System</a></div><div class="ttdoc">Represents a system with a name and value.</div><div class="ttdef"><b>Definition:</b> system.h:18</div></div>
-<div class="ttc" id="aunit__tests_8h_html_a096a1fcbcac63ad5666de45a7d27e581"><div class="ttname"><a href="unit__tests_8h.html#a096a1fcbcac63ad5666de45a7d27e581">modelTest</a></div><div class="ttdeci">void modelTest()</div><div class="ttdef"><b>Definition:</b> unit_tests.cpp:97</div></div>
-<div class="ttc" id="aunit__tests_8h_html_a40fdbf1f7ef2ac583b59a2136be55358"><div class="ttname"><a href="unit__tests_8h.html#a40fdbf1f7ef2ac583b59a2136be55358">systemTest</a></div><div class="ttdeci">void systemTest()</div><div class="ttdef"><b>Definition:</b> unit_tests.cpp:12</div></div>
-<div class="ttc" id="aunit__tests_8h_html_a63fb44fe4845e0a7bc4b57fcc843b505"><div class="ttname"><a href="unit__tests_8h.html#a63fb44fe4845e0a7bc4b57fcc843b505">flowTest</a></div><div class="ttdeci">void flowTest()</div><div class="ttdef"><b>Definition:</b> unit_tests.cpp:48</div></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classExpression.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classExpression.html">Expression</a> : <span class="keyword">public</span> <a class="code" href="classFlowImpl.html">FlowImpl</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classExpression.html#afcf87716bf0abfe8d414c92529e1564a">   10</a></span>&#160;    <a class="code" href="classExpression.html#afcf87716bf0abfe8d414c92529e1564a">Expression</a>() {}</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classExpression.html#a7f2eda4b053d741300aa8fe8fe35e50b">   11</a></span>&#160;    <a class="code" href="classExpression.html#a7f2eda4b053d741300aa8fe8fe35e50b">Expression</a>(<span class="keywordtype">string</span> _name, <a class="code" href="classSystem.html">System</a>* _source, <a class="code" href="classSystem.html">System</a>* _target)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        : <a class="code" href="classFlowImpl.html">FlowImpl</a>(_name, _source, _target) {}</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classExpression.html#af79fccfe6d47de948ec6b1352cf041e2">   14</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="classExpression.html#af79fccfe6d47de948ec6b1352cf041e2">execute</a>()<span class="keyword"> override </span>{ </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classFlowImpl.html#a06c8ffdcfd36b04ddad091d2c043f5d0">getSource</a>()-&gt;<a class="code" href="classSystem.html#a41b673faa6c199eb8e4f204639fab4f2">getValue</a>() * 0.01;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassExpression_html"><div class="ttname"><a href="classExpression.html">Expression</a></div><div class="ttdef"><b>Definition:</b> unit_tests.h:8</div></div>
+<div class="ttc" id="aclassExpression_html_a7f2eda4b053d741300aa8fe8fe35e50b"><div class="ttname"><a href="classExpression.html#a7f2eda4b053d741300aa8fe8fe35e50b">Expression::Expression</a></div><div class="ttdeci">Expression(string _name, System *_source, System *_target)</div><div class="ttdef"><b>Definition:</b> unit_tests.h:11</div></div>
+<div class="ttc" id="aclassExpression_html_af79fccfe6d47de948ec6b1352cf041e2"><div class="ttname"><a href="classExpression.html#af79fccfe6d47de948ec6b1352cf041e2">Expression::execute</a></div><div class="ttdeci">virtual double execute() override</div><div class="ttdef"><b>Definition:</b> unit_tests.h:14</div></div>
+<div class="ttc" id="aclassExpression_html_afcf87716bf0abfe8d414c92529e1564a"><div class="ttname"><a href="classExpression.html#afcf87716bf0abfe8d414c92529e1564a">Expression::Expression</a></div><div class="ttdeci">Expression()</div><div class="ttdef"><b>Definition:</b> unit_tests.h:10</div></div>
+<div class="ttc" id="aclassFlowImpl_html"><div class="ttname"><a href="classFlowImpl.html">FlowImpl</a></div><div class="ttdef"><b>Definition:</b> flow_impl.h:8</div></div>
+<div class="ttc" id="aclassFlowImpl_html_a06c8ffdcfd36b04ddad091d2c043f5d0"><div class="ttname"><a href="classFlowImpl.html#a06c8ffdcfd36b04ddad091d2c043f5d0">FlowImpl::getSource</a></div><div class="ttdeci">System * getSource() const override</div><div class="ttdef"><b>Definition:</b> flow_impl.cpp:42</div></div>
+<div class="ttc" id="aclassSystem_html"><div class="ttname"><a href="classSystem.html">System</a></div><div class="ttdef"><b>Definition:</b> system.h:11</div></div>
+<div class="ttc" id="aclassSystem_html_a41b673faa6c199eb8e4f204639fab4f2"><div class="ttname"><a href="classSystem.html#a41b673faa6c199eb8e4f204639fab4f2">System::getValue</a></div><div class="ttdeci">virtual double getValue() const =0</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
