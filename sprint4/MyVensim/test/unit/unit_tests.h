@@ -8,12 +8,18 @@
 #include <cassert>
 #include <cmath>
 
-class Expression : public FlowImpl {
-public:
-    Expression() {}
-    Expression(string _name, System* _source, System* _target)
-        : FlowImpl(_name, _source, _target) {}
 
+/**
+ * @class FlowUTests
+ * @brief Derived class from Flow for the unitary tests 
+ * 
+ * 
+ */
+class FlowUTests : public FlowImpl {
+
+public:
+    FlowUTests(){}
+    FlowUTests(string name, System* source, System* target) : FlowImpl(name, source, target){}
     virtual double execute() override { 
         return getSource()->getValue() * 0.01;
     }

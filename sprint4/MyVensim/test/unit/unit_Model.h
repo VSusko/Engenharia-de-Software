@@ -37,6 +37,14 @@ class unit_Model
          * that they correctly set values for the model's attributes.
          */
         void testModelSetters();
+        
+        /**
+         * @brief Test for the getters of the Model class.
+         * 
+         * This test evaluates the behavior of the getter functions in the Model class to ensure 
+         * that they correctly get values (or pointers) for the model's attributes.
+         */
+        void testModelGetters();
     
         /**
          * @brief Test for the add functionality of the Model class.
