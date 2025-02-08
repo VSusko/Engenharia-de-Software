@@ -22,26 +22,34 @@ class unit_System
         void testSystemDefaultConstructor();
 
         /**
+         * @brief Test the getters.
+         * 
+         * Creates a `SystemImpl` object, uses the getters to validates that the `name` and `value` are updated correctly.
+         */
+        void testSystemGetters();
+
+        /**
          * @brief Test the setters.
          * 
          * Creates a `SystemImpl` object, uses the setters to modify the values, and validates that the `name` and `value` are updated correctly.
          */
         void testSystemSetters();
 
-        
         /**
          * @brief Test the parameterized constructor.
          * 
          * Creates a `SystemImpl` object with an initial name and value and validates that these values are set correctly.
          */
         void testSystemParameterizedConstructor();
-
+        
         /**
          * @brief Test the copy assignment operator.
          * 
          * Creates a `SystemImpl` object, makes a copy using the assignment operator, and validates that the copy was made correctly.
          */
         void testSystemCopyOperator();
+        
+        void testSystemSelfAssignment();
 
         /**
          * @brief Test the copy constructor.
@@ -49,13 +57,15 @@ class unit_System
          * Creates a `SystemImpl` object, makes a copy using the copy constructor, and validates that the values are copied correctly.
          */
         void testSystemCopyConstructor();
-
+        
         /**
          * @brief Test the clear function.
          * 
          * Creates a `SystemImpl` object, calls the `clear()` function to reset the value, and validates that the value is correctly reset to zero.
          */
         void testSystemClear();
+
+        void testSystemEdgeCases();
         
         /**
          * @brief Run all system tests.

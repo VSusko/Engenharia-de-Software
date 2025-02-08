@@ -33,6 +33,14 @@ class unit_Flow
         /**
          * @brief Test for the setters of the Flow class.
          * 
+         * This test evaluates the behavior of the getter functions in the Flow class to ensure 
+         * that they correctly get values for the attributes.
+         */
+        void testFlowGetters();
+
+        /**
+         * @brief Test for the setters of the Flow class.
+         * 
          * This test evaluates the behavior of the setter functions in the Flow class to ensure 
          * that they correctly set values for the attributes.
          */
@@ -54,6 +62,8 @@ class unit_Flow
          */
         void testFlowCopyOperator();
 
+        void testFlowSelfAssignment();
+
         /**
          * @brief Test for the clear functionality of the Flow class.
          * 
@@ -61,7 +71,11 @@ class unit_Flow
          * resetting the object to its initial state.
          */
         void testFlowClear();
+
+        void testFlowEdgeCases();
         
+        void testFlowExecute();
+
         /**
          * @brief Runs all tests for the Flow class.
          * 

@@ -9,10 +9,18 @@ void unit_System::testSystemDefaultConstructor() {
 }
 
 
+void unit_System::testSystemGetters() {
+    SystemImpl* p1 = new SystemImpl("getterTest", 100);
+    assert(p1->getName() == "getterTest");
+    assert(p1->getValue() == 100);
+    delete p1;
+}
+
+
 void unit_System::testSystemSetters() {
     SystemImpl* p1 = new SystemImpl();
-    p1->setName("test");
-    assert(p1->name == "test");
+    p1->setName("setterTest");
+    assert(p1->name == "setterTest");
     p1->setValue(10);
     assert(p1->value == 10);
     delete p1;
@@ -37,6 +45,13 @@ void unit_System::testSystemCopyOperator() {
     delete p2;
 }
 
+void unit_System::testSystemSelfAssignment() {
+    SystemImpl* p1 = new SystemImpl("selfAssign", 50);
+    *p1 = *p1;
+    assert(p1->name == "selfAssign");
+    assert(p1->value == 50);
+    delete p1;
+}
 
 void unit_System::testSystemCopyConstructor() {
     SystemImpl* p1 = new SystemImpl("copyConstructor", 80);
@@ -55,12 +70,26 @@ void unit_System::testSystemClear() {
     delete p1;
 }
 
+void unit_System::testSystemEdgeCases() {
+    SystemImpl* p1 = new SystemImpl("", -999);
+    assert(p1->name == "");
+    assert(p1->value == -999);
+
+    p1->setValue(1e9);
+    assert(p1->value == 1e9);
+
+    delete p1;
+}
+
 
 void unit_System::runSystemTests() {
     testSystemDefaultConstructor();
     testSystemSetters();
+    testSystemGetters();
     testSystemParameterizedConstructor();
     testSystemCopyOperator();
+    testSystemSelfAssignment();
     testSystemCopyConstructor();
     testSystemClear();
+    testSystemEdgeCases();
 }

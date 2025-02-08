@@ -5,7 +5,7 @@ U_TEST_DIR 		:= test/unit/
 BIN_DIR 		:= bin/
 
 CXX 			:= g++
-CXXFLAGS 		:= -std=c++17 -Wall -g -I"$(BIN_DIR)"
+CXXFLAGS 		:= -std=c++17 -Wall -O2 -g -I"$(BIN_DIR)"
 LDFLAGS 		:= 
 
 EXEC_FUNC 		:= $(BIN_DIR)ftest.exe
