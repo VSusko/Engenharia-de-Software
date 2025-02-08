@@ -7,7 +7,7 @@
 
 #include <cassert>
 #include <cmath>
-
+#define _approximate(_X)    (round(10000.0 * (_X)) / 10000.0)
 
 /**
  * @class FlowUTests
