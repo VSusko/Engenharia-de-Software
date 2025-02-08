@@ -49,6 +49,11 @@ class unit_System
          */
         void testSystemCopyOperator();
         
+        /**
+         * @brief Test for the copy operator on the own object
+         * 
+         * This test ensures that the copy operator won't fail if used on the own object
+         */
         void testSystemSelfAssignment();
 
         /**
@@ -65,6 +70,11 @@ class unit_System
          */
         void testSystemClear();
 
+        /**
+         * @brief Test for the limits of values.
+         * 
+         * This test ensures that large and negative numbers can also be used
+         */
         void testSystemEdgeCases();
         
         /**

@@ -36,12 +36,33 @@ void unit_Model::testModelAdd() {
 void unit_Model::testModelCopyConstructor() {
     ModelImpl* model1 = new ModelImpl("original");
     SystemImpl* s1 = new SystemImpl("s1", 50);
-    Expression* f1 = new Expression("f1", s1, nullptr);
+    FlowUTest* f1 = new FlowUTest("f1", s1, nullptr);
     
     model1->add(s1);
     model1->add(f1);
     
     ModelImpl* model2 = new ModelImpl(*model1);
+    
+    assert(model2->name == "original");
+    assert(model2->systems[0] != nullptr);
+    assert(model2->flows[0] != nullptr);
+    
+    delete model1;
+    delete model2;
+    delete s1;
+    delete f1;
+}
+
+void unit_Model::testModelCopyOperator() {
+    ModelImpl* model1 = new ModelImpl("original");
+    SystemImpl* s1 = new SystemImpl("s1", 50);
+    FlowUTest* f1 = new FlowUTest("f1", s1, nullptr);
+    
+    model1->add(s1);
+    model1->add(f1);
+    
+    ModelImpl* model2 = new ModelImpl();
+    *model2 = *model1;
     
     assert(model2->name == "original");
     assert(model2->systems[0] != nullptr);
@@ -84,7 +105,7 @@ void unit_Model::testModelRemoveSystem() {
 void unit_Model::testModelRemoveFlow() {
     ModelImpl* model = new ModelImpl();
     SystemImpl* s1 = new SystemImpl("s1", 50);
-    Expression* f1 = new Expression("f1", s1, nullptr);
+    FlowUTest* f1 = new FlowUTest("f1", s1, nullptr);
     model->add(f1);
     
     assert(model->remove(f1) == true);
@@ -111,7 +132,7 @@ void unit_Model::testModelAddDuplicatesSystem() {
 void unit_Model::testModelAddDuplicatesFlow() {
     ModelImpl* model = new ModelImpl();
     SystemImpl* s1 = new SystemImpl("s1", 100);
-    Expression* f1 = new Expression("f1", nullptr, nullptr);
+    FlowUTest* f1 = new FlowUTest("f1", nullptr, nullptr);
     
     assert(model->add(f1) == true);
     assert(model->add(f1) == false); 
@@ -124,7 +145,7 @@ void unit_Model::testModelAddDuplicatesFlow() {
 void unit_Model::testModelGetters() {
     ModelImpl* model = new ModelImpl("getterTest");
     SystemImpl* s1 = new SystemImpl("s1", 100);
-    Expression* f1 = new Expression("f1", s1, nullptr);
+    FlowUTest* f1 = new FlowUTest("f1", s1, nullptr);
     
     model->add(s1);
     model->add(f1);
@@ -144,7 +165,7 @@ void unit_Model::testModelGetters() {
 void unit_Model::testModelExists() {
     ModelImpl* model = new ModelImpl();
     SystemImpl* s1 = new SystemImpl("s1", 50);
-    Expression* f1 = new Expression("f1", s1, nullptr);
+    FlowUTest* f1 = new FlowUTest("f1", s1, nullptr);
 
     model->add(s1);
     model->add(f1);
@@ -165,7 +186,7 @@ void unit_Model::testModelExists() {
 void unit_Model::testModelClear() {
     ModelImpl* model = new ModelImpl();
     SystemImpl* s1 = new SystemImpl("s1", 100);
-    Expression* f1 = new Expression("f1", s1, nullptr);
+    FlowUTest* f1 = new FlowUTest("f1", s1, nullptr);
 
     model->add(s1);
     model->add(f1);
@@ -184,7 +205,7 @@ void unit_Model::testModelSimulate() {
     ModelImpl* model1 = new ModelImpl();
     SystemImpl* p1 = new SystemImpl("p1", 100);
     SystemImpl* p2 = new SystemImpl("p2", 5);
-    Expression* flow1 = new Expression("flow1", p1, p2);
+    FlowUTest* flow1 = new FlowUTest("flow1", p1, p2);
     model1->add(p1);
     model1->add(p2);
     model1->add(flow1);
@@ -197,14 +218,35 @@ void unit_Model::testModelSimulate() {
     delete flow1;
 }
 
+void unit_Model::testModelReport() {
+    ModelImpl* model1 = new ModelImpl();
+    SystemImpl* p1 = new SystemImpl("p1", 100);
+    model1->add(p1);
+
+    // Creating an output flow that is going to capture what was printed in method report()
+    std::ostringstream capture;
+    // Redirecting its flow:
+    std::streambuf* OriginalBufferFlow = std::cout.rdbuf(capture.rdbuf());
+    
+    model1->report();
+
+    // Restoring the original flow
+    std::cout.rdbuf(OriginalBufferFlow);
+
+    assert(capture.str() == "System name: p1 | Value: 100\n");
+    delete model1;
+    delete p1;
+}
 
 void unit_Model::runModelTests() {
+    testModelReport();
     testModelDefaultConstructor();
     testModelParameterizedConstructor();
     testModelSetters();
     testModelAdd();
-    
+
     testModelCopyConstructor();
+    testModelCopyOperator();
     testModelAssignmentOperator();
     testModelRemoveSystem();
     testModelRemoveFlow();

@@ -62,6 +62,11 @@ class unit_Flow
          */
         void testFlowCopyOperator();
 
+        /**
+         * @brief Test for the copy operator on the own object
+         * 
+         * This test ensures that the copy operator won't fail if used on the own object
+         */
         void testFlowSelfAssignment();
 
         /**
@@ -72,8 +77,18 @@ class unit_Flow
          */
         void testFlowClear();
 
+        /**
+         * @brief Test for the limits of values.
+         * 
+         * This test ensures that negative numbers can also be used
+         */
         void testFlowEdgeCases();
         
+        /**
+         * @brief Test for execute method
+         * 
+         * This test is going to calculate an expression made by user and approve whether it works or not
+         */
         void testFlowExecute();
 
         /**

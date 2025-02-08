@@ -2,7 +2,7 @@
 #define UNIT_MODEL_H
 
 #include "unit_tests.h"
-
+#include <sstream>
 
 /**
  * @class unit_Model
@@ -46,34 +46,91 @@ class unit_Model
          */
         void testModelAdd();
 
+        /**
+         * @brief Test for the copy constructor of the Model class.
+         * 
+         * This test checks the proper functioning of the Model class's copy constructor, ensuring 
+         * that an object can be correctly copied and all values are transferred properly.
+         */
         void testModelCopyConstructor();
 
+        /**
+         * @brief Test for the copy assignment operator of the Model class.
+         * 
+         * This test verifies that the Model class's copy assignment operator functions correctly, 
+         * ensuring that the values of one object are properly assigned to another.
+         */
+        void testModelCopyOperator();
 
+        /**
+         * @brief Test for the copy operator on the own object
+         * 
+         * This test ensures that the copy operator won't fail if used on the own object
+         */
         void testModelAssignmentOperator();
 
-
+        /**
+         * @brief Tests the remove method of the Model class for systems.
+         * 
+         * This test verifies the correct behavior of the remove method, ensuring that systems can be 
+         * removed properly of the Model class.
+         */
         void testModelRemoveSystem();
 
-
+        /**
+         * @brief Tests the remove method of the Model class for flows.
+         * 
+         * This test verifies the correct behavior of the remove method, ensuring that flows can be 
+         * removed properly of the Model class.
+         */
         void testModelRemoveFlow();
 
-
+        /**
+         * @brief Tests if a system added twice is being actually added two times.
+         * 
+         * This test verifies the correct behavior of adding a system in model container
+         */
         void testModelAddDuplicatesSystem();
 
-
+        /**
+         * @brief Tests if a flow added twice is being actually added two times.
+         * 
+         * This test verifies the correct behavior of adding a flow in model container
+         */
         void testModelAddDuplicatesFlow();
 
-
+        /**
+         * @brief Test for the getters of the Model class.
+         * 
+         * This test evaluates the behavior of the getter functions in the Model class to ensure 
+         * that they correctly get values for the attributes.
+         */
         void testModelGetters();
 
+        /**
+         * @brief Test for the report functionality of the Model class.
+         * 
+         * Since the report method just prints all systems informations, this function redirects
+         * the output flow to a buffer that is going to be compared with the expected output 
+         */
+        void testModelReport();
 
+        /**
+         * @brief Test for the exists method of the Model class.
+         * 
+         * This test checks if the method exists is actually looking for an object in the model and returning
+         * "true" if the object is present and "false" otherwise
+         */
         void testModelExists();
 
-
+        /**
+         * @brief Test for the clear functionality of the Model class.
+         * 
+         * This test ensures that the `clear()` function works as expected, clearing all systems and 
+         * flows pointers.
+         */
         void testModelClear();
 
-
-    
         /**
          * @brief Test for the simulate functionality of the Model class.
          * 
