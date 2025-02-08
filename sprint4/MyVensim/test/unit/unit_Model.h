@@ -37,14 +37,6 @@ class unit_Model
          * that they correctly set values for the model's attributes.
          */
         void testModelSetters();
-        
-        /**
-         * @brief Test for the getters of the Model class.
-         * 
-         * This test evaluates the behavior of the getter functions in the Model class to ensure 
-         * that they correctly get values (or pointers) for the model's attributes.
-         */
-        void testModelGetters();
     
         /**
          * @brief Test for the add functionality of the Model class.
@@ -53,6 +45,34 @@ class unit_Model
          * added properly within the Model class.
          */
         void testModelAdd();
+
+        void testModelCopyConstructor();
+
+
+        void testModelAssignmentOperator();
+
+
+        void testModelRemoveSystem();
+
+
+        void testModelRemoveFlow();
+
+
+        void testModelAddDuplicatesSystem();
+
+
+        void testModelAddDuplicatesFlow();
+
+
+        void testModelGetters();
+
+
+        void testModelExists();
+
+
+        void testModelClear();
+
+
     
         /**
          * @brief Test for the simulate functionality of the Model class.

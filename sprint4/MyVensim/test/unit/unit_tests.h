@@ -7,19 +7,13 @@
 
 #include <cassert>
 #include <cmath>
-#define _approximate(_X)    (round(10000.0 * (_X)) / 10000.0)
 
-/**
- * @class FlowUTests
- * @brief Derived class from Flow for the unitary tests 
- * 
- * 
- */
-class FlowUTests : public FlowImpl {
-
+class Expression : public FlowImpl {
 public:
-    FlowUTests(){}
-    FlowUTests(string name, System* source, System* target) : FlowImpl(name, source, target){}
+    Expression() {}
+    Expression(string _name, System* _source, System* _target)
+        : FlowImpl(_name, _source, _target) {}
+
     virtual double execute() override { 
         return getSource()->getValue() * 0.01;
     }

@@ -3,8 +3,6 @@
 
 #include "system.h"
 
-using namespace std;
-
 /**
  * @class System
  * @brief Represents a system with a name and value.
