@@ -4,7 +4,7 @@
 #include "model.h"
 
 /**
- * @class Model
+ * @class ModelImpl
  * @brief Represents a system model consisting of systems and flows.
  * 
  * The Model class defines a model that holds systems and flows. It provides

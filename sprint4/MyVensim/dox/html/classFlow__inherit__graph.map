@@ -1,8 +1,0 @@
-<map id="Flow" name="Flow">
-<area shape="rect" id="node1" title=" " alt="" coords="213,5,325,200"/>
-<area shape="rect" id="node2" href="$classFlowImpl.html" title=" " alt="" coords="209,248,328,531"/>
-<area shape="rect" id="node3" href="$classComplex.html" title=" " alt="" coords="5,579,111,685"/>
-<area shape="rect" id="node4" href="$classExponential.html" title=" " alt="" coords="135,579,259,685"/>
-<area shape="rect" id="node5" href="$classExpression.html" title=" " alt="" coords="283,579,401,685"/>
-<area shape="rect" id="node6" href="$classLogistical.html" title=" " alt="" coords="426,579,535,685"/>
-</map>

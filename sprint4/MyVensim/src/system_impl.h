@@ -4,7 +4,7 @@
 #include "system.h"
 
 /**
- * @class System
+ * @class SystemImpl
  * @brief Represents a system with a name and value.
  * 
  * This class defines a system with a name and a value. It provides methods

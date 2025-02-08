@@ -8,6 +8,12 @@
 #include <cassert>
 #include <cmath>
 
+/**
+ * @class FlowUTest
+ * @brief Derived class from FlowImpl that will be used on unitary tests
+ * 
+ * 
+ */
 class FlowUTest : public FlowImpl {
 public:
     FlowUTest() {}
