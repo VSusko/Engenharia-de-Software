@@ -5,4 +5,5 @@ Lista de afazeres:
 ==== Testes unitarios ====
 
 Model:
-- Encontrar uma forma de testar o metodo simulate sem os asserts nos systems
+- Tirar os includes de implementacao nos testes funcionais
+- trocar ponteiros por variaveis estaticas
