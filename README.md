@@ -5,5 +5,5 @@ Lista de afazeres:
 ==== Testes unitarios ====
 
 Model:
-- Tirar os includes de implementacao nos testes funcionais
+- Tirar os includes de implementacao nos testes funcionais, deixar apenas o flow.impl
 - trocar ponteiros por variaveis estaticas
