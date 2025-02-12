@@ -7,6 +7,7 @@
 
 #include <cassert>
 #include <cmath>
+#include <sstream>
 
 /**
  * @class FlowUTest
@@ -21,7 +22,7 @@ public:
         : FlowImpl(name, source, target) {}
 
     virtual double execute() override { 
-        return getSource()->getValue() * 0.01;
+        return (getSource()->getValue() * 0);
     }
 };
 

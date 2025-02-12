@@ -1,6 +1,4 @@
 #include "funcional_tests.h"
-#include <cassert>
-#include <cmath>
 
 //===================Execute overriding===================//
 

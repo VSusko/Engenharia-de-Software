@@ -2,7 +2,6 @@
 #define UNIT_MODEL_H
 
 #include "unit_tests.h"
-#include <sstream>
 
 /**
  * @class unit_Model

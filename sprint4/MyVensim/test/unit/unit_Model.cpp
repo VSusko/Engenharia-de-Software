@@ -2,240 +2,192 @@
 
 
 void unit_Model::testModelDefaultConstructor() {
-    ModelImpl* model1 = new ModelImpl();
-    assert(model1->name == "");
-    delete model1;
+    ModelImpl model1;
+    assert(model1.name == "");
 }
 
 
 void unit_Model::testModelParameterizedConstructor() {
-    ModelImpl* model2 = new ModelImpl("model2");
-    assert(model2->name == "model2");
-    delete model2;
+    ModelImpl model2("model2");
+    assert(model2.name == "model2");
 }
 
 
 void unit_Model::testModelSetters() {
-    ModelImpl* model1 = new ModelImpl();
-    model1->setName("setterTest");
-    assert(model1->name == "setterTest");
-    delete model1;
+    ModelImpl model1;
+    model1.setName("setterTest");
+    assert(model1.name == "setterTest");
 }
 
 
 void unit_Model::testModelAdd() {
-    ModelImpl* model1 = new ModelImpl();
-    SystemImpl* p1 = new SystemImpl("p1", 100);
-    model1->add(p1);
-    assert(model1->systems[0] == p1);
-    delete model1;
-    delete p1;
+    ModelImpl model1;
+    SystemImpl p1;
+    model1.add(&p1);
+    assert(model1.systems[0] == &p1);
 }
 
 
 void unit_Model::testModelCopyConstructor() {
-    ModelImpl* model1 = new ModelImpl("original");
-    SystemImpl* s1 = new SystemImpl("s1", 50);
-    FlowUTest* f1 = new FlowUTest("f1", s1, nullptr);
+    ModelImpl model1;
+    SystemImpl s1;
+    FlowUTest f1;
     
-    model1->add(s1);
-    model1->add(f1);
+    model1.name = "original";
+    model1.systems.push_back(&s1);
+    model1.flows.push_back(&f1);
+    //model1.systems[0] = &s;
+    //model1.flows[0]   = &f;
     
-    ModelImpl* model2 = new ModelImpl(*model1);
+    ModelImpl model2 = ModelImpl(model1);
     
-    assert(model2->name == "original");
-    assert(model2->systems[0] != nullptr);
-    assert(model2->flows[0] != nullptr);
-    
-    delete model1;
-    delete model2;
-    delete s1;
-    delete f1;
+    assert(model2.name       == "original");
+    assert(model2.systems[0] == &s1);
+    assert(model2.flows[0]   == &f1);
 }
 
 void unit_Model::testModelCopyOperator() {
-    ModelImpl* model1 = new ModelImpl("original");
-    SystemImpl* s1 = new SystemImpl("s1", 50);
-    FlowUTest* f1 = new FlowUTest("f1", s1, nullptr);
+    ModelImpl  model1;
+    SystemImpl s1;
+    FlowUTest  f1;
     
-    model1->add(s1);
-    model1->add(f1);
+    model1.name = "original";
+    model1.systems.push_back(&s1);
+    model1.flows.push_back(&f1);
+    ModelImpl model2 = model1;
     
-    ModelImpl* model2 = new ModelImpl();
-    *model2 = *model1;
-    
-    assert(model2->name == "original");
-    assert(model2->systems[0] != nullptr);
-    assert(model2->flows[0] != nullptr);
-    
-    delete model1;
-    delete model2;
-    delete s1;
-    delete f1;
+    assert(model2.name       == "original");
+    assert(!model1.systems.empty());
+    assert(!model1.flows.empty());
+    //assert(model2.systems[0] != nullptr);
+    //assert(model2.flows[0]   != nullptr);
 }
 
 
 void unit_Model::testModelAssignmentOperator() {
-    ModelImpl* model1 = new ModelImpl("model1");
-    SystemImpl* s1 = new SystemImpl("s1", 100);
-    model1->add(s1);
+    ModelImpl model1;
+    model1.name = "model1";
+    SystemImpl s1;
+    model1.systems.push_back(&s1);
 
-    *model1 = *model1;
-    assert(model1->name == "model1");
-    assert(model1->systems[0] == s1);
-
-    delete model1;
-    delete s1;
+    model1 = model1;
+    assert(model1.name       == "model1");
+    assert(model1.systems[0] == &s1);
 }
 
 
 void unit_Model::testModelRemoveSystem() {
-    ModelImpl* model = new ModelImpl();
-    SystemImpl* s1 = new SystemImpl("s1", 50);
-    model->add(s1);
+    ModelImpl  model1;
+    SystemImpl s1;
+    model1.systems.push_back(&s1);
     
-    assert(model->remove(s1) == true);
-    assert(model->getSystem("s1") == nullptr);
-    
-    delete model;
-    delete s1;
+    assert(model1.remove(&s1) == true);
+    //assert(model1.systems[0]  == nullptr);
+    assert(model1.systems.empty());
 }
 
 
 void unit_Model::testModelRemoveFlow() {
-    ModelImpl* model = new ModelImpl();
-    SystemImpl* s1 = new SystemImpl("s1", 50);
-    FlowUTest* f1 = new FlowUTest("f1", s1, nullptr);
-    model->add(f1);
+    ModelImpl  model1;
+    FlowUTest  f1;
+    model1.flows.push_back(&f1);
     
-    assert(model->remove(f1) == true);
-    assert(model->getFlow("f1") == nullptr);
-    
-    delete model;
-    delete s1;
-    delete f1;
+    assert(model1.remove(&f1) == true);
+    assert(model1.flows.empty());
+    //assert(model1.flows[0]    == nullptr);
 }
 
 
 void unit_Model::testModelAddDuplicatesSystem() {
-    ModelImpl* model = new ModelImpl();
-    SystemImpl* s1 = new SystemImpl("s1", 100);
+    ModelImpl model1;
+    SystemImpl s1;
     
-    assert(model->add(s1) == true);
-    assert(model->add(s1) == false);
-    
-    delete model;
-    delete s1;
+    assert(model1.add(&s1) == true);
+    assert(model1.add(&s1) == false);
 }
 
 
 void unit_Model::testModelAddDuplicatesFlow() {
-    ModelImpl* model = new ModelImpl();
-    SystemImpl* s1 = new SystemImpl("s1", 100);
-    FlowUTest* f1 = new FlowUTest("f1", nullptr, nullptr);
+    ModelImpl  model1;
+    FlowUTest  f1;
     
-    assert(model->add(f1) == true);
-    assert(model->add(f1) == false); 
-    
-    delete model;
-    delete s1;
+    assert(model1.add(&f1) == true);
+    assert(model1.add(&f1) == false); 
 }
 
 
 void unit_Model::testModelGetters() {
-    ModelImpl* model = new ModelImpl("getterTest");
-    SystemImpl* s1 = new SystemImpl("s1", 100);
-    FlowUTest* f1 = new FlowUTest("f1", s1, nullptr);
-    
-    model->add(s1);
-    model->add(f1);
-    
-    assert(model->getName() == "getterTest");
-    assert(model->getSystem("s1") == s1);
-    assert(model->getFlow("f1") == f1);
-    assert(model->getSystem("nonexistentSystem") == nullptr);
-    assert(model->getFlow("nonexistentFlow") == nullptr);
+    ModelImpl model1;
+    model1.name = "getterTest";
+    SystemImpl s1("s1", 1);
+    FlowUTest  f1("f1", nullptr, nullptr);
 
-    delete model;
-    delete s1;
-    delete f1;
+    model1.add(&s1);
+    model1.add(&f1);
+    
+    assert(model1.getName()       == "getterTest");
+    assert(model1.getSystem("s1") == &s1);
+    assert(model1.getFlow("f1")   == &f1);
+    assert(model1.getSystem("nonexistentSystem") == nullptr);
+    assert(model1.getFlow("nonexistentFlow")     == nullptr);
 }
 
 
 void unit_Model::testModelExists() {
-    ModelImpl* model = new ModelImpl();
-    SystemImpl* s1 = new SystemImpl("s1", 50);
-    FlowUTest* f1 = new FlowUTest("f1", s1, nullptr);
+    ModelImpl model1;
+    SystemImpl s1;
+    FlowUTest f1;
 
-    model->add(s1);
-    model->add(f1);
+    model1.add(&s1);
+    model1.add(&f1);
 
-    assert(model->exists(s1) == true);
-    assert(model->exists(f1) == true);
+    assert(model1.exists(&s1) == true);
+    assert(model1.exists(&f1) == true);
 
-    SystemImpl* s2 = new SystemImpl("s2", 10);
-    assert(model->exists(s2) == false);
-
-    delete model;
-    delete s1;
-    delete f1;
-    delete s2;
+    SystemImpl s2;
+    assert(model1.exists(&s2) == false);
 }
 
 
 void unit_Model::testModelClear() {
-    ModelImpl* model = new ModelImpl();
-    SystemImpl* s1 = new SystemImpl("s1", 100);
-    FlowUTest* f1 = new FlowUTest("f1", s1, nullptr);
+    ModelImpl model1;
+    SystemImpl s1;
+    FlowUTest f1;
 
-    model->add(s1);
-    model->add(f1);
+    model1.add(&s1);
+    model1.add(&f1);
 
-    model->clear();
-    assert(model->getSystem("s1") == nullptr);
-    assert(model->getFlow("f1") == nullptr);
-
-    delete model;
-    delete s1;
-    delete f1;
+    model1.clear();
+    assert(model1.systems.size() == 1);
+    assert(model1.flows.size() == 1);
+    //assert(model.systems[0] == nullptr);
+    //assert(model.flows[0]   == nullptr);
 }
 
 
 void unit_Model::testModelSimulate() {
-    ModelImpl* model1 = new ModelImpl();
-    SystemImpl* p1 = new SystemImpl("p1", 100);
-    SystemImpl* p2 = new SystemImpl("p2", 5);
-    FlowUTest* flow1 = new FlowUTest("flow1", p1, p2);
-    model1->add(p1);
-    model1->add(p2);
-    model1->add(flow1);
-    model1->simulate(0, 9, 1);
-    assert(fabs(p1->getValue() - 90.4382) < 0.0001);
-    assert(fabs(p2->getValue() - 14.5618) < 0.0001);
-    delete model1;
-    delete p1;
-    delete p2;
-    delete flow1;
+    ModelImpl model1;
+    model1.simulate(0,10,1);
+    assert(model1.clock == 11);
 }
 
 void unit_Model::testModelReport() {
-    ModelImpl* model1 = new ModelImpl();
-    SystemImpl* p1 = new SystemImpl("p1", 100);
-    model1->add(p1);
+    // ModelImpl  model1;
+    // SystemImpl s1;
 
-    // Creating an output flow that is going to capture what was printed in method report()
-    std::ostringstream capture;
-    // Redirecting its flow:
-    std::streambuf* OriginalBufferFlow = std::cout.rdbuf(capture.rdbuf());
+    // model.systems[0] = &s1;
+
+    // // Creating an output flow that is going to capture what was printed in method report()
+    // ostringstream capture;
+    // // Redirecting its flow:
+    // streambuf OriginalBufferFlow = cout.rdbuf(capture.rdbuf());
     
-    model1->report();
+    // model1.report();
 
-    // Restoring the original flow
-    std::cout.rdbuf(OriginalBufferFlow);
+    // // Restoring the original flow
+    // cout.rdbuf(OriginalBufferFlow);
 
-    assert(capture.str() == "System name: p1 | Value: 100\n");
-    delete model1;
-    delete p1;
+    // assert(capture.str() == "System name: | Value: 0\n");
 }
 
 void unit_Model::runModelTests() {

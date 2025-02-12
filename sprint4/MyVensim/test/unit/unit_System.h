@@ -71,13 +71,6 @@ class unit_System
         void testSystemClear();
 
         /**
-         * @brief Test for the limits of values.
-         * 
-         * This test ensures that large and negative numbers can also be used
-         */
-        void testSystemEdgeCases();
-        
-        /**
          * @brief Run all system tests.
          * 
          * Executes all the test functions to validate the behavior of the `SystemImpl` class.

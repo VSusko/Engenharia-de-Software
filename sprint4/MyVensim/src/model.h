@@ -18,6 +18,7 @@ class Model
         //===================Getters and Setters===================//
         virtual void setName(string string) = 0;
         virtual string getName() const = 0;
+        virtual double getClock() const = 0;
         virtual System* getSystem(const string name) const = 0;
         virtual Flow* getFlow(const string name) const = 0;
 

@@ -76,13 +76,6 @@ class unit_Flow
          * resetting the object to its initial state.
          */
         void testFlowClear();
-
-        /**
-         * @brief Test for the limits of values.
-         * 
-         * This test ensures that negative numbers can also be used
-         */
-        void testFlowEdgeCases();
         
         /**
          * @brief Test for execute method

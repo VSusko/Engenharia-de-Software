@@ -17,6 +17,7 @@ class ModelImpl : public Model
 
     private:
         string name; /**< Name of the model */
+        double clock; /**< Clock of the model */
         vector<System*> systems; /**< List of systems in the model */
         vector<Flow*> flows; /**< List of flows in the model */
         
@@ -64,6 +65,13 @@ class ModelImpl : public Model
          */
         string getName() const;
 
+        /**
+         * @brief Gets the value of the clock
+         * 
+         * @return Clock value
+         */
+        double getClock() const;
+        
         /**
          * @brief Gets a system by its name
          * 

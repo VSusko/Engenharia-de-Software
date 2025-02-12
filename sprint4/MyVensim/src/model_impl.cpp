@@ -34,6 +34,7 @@ ModelImpl ModelImpl::operator=(const ModelImpl &other)
 
 void ModelImpl::setName(string name) { this->name = name; }
 string ModelImpl::getName() const { return this->name; }
+double ModelImpl::getClock() const { return this->clock; }
 
 System* ModelImpl::getSystem(const string name) const
 {
@@ -41,7 +42,7 @@ System* ModelImpl::getSystem(const string name) const
         if(system->getName() == name)
             return system;
     }
-    return NULL;
+    return nullptr;
 }
 
 Flow* ModelImpl::getFlow(const string name) const
@@ -50,7 +51,7 @@ Flow* ModelImpl::getFlow(const string name) const
         if(flow->getName() == name)
             return flow;
     }
-    return NULL;
+    return nullptr;
 }
 
 //===================Class functions===================//
@@ -145,8 +146,11 @@ bool ModelImpl::remove(System* f)
 
 void ModelImpl::clear()
 {
-    this->flows.clear();
-    this->systems.clear();
+    for(auto flow : flows)
+        flow->clear();
+    
+    for(auto system : systems)
+        system->clear();
 }
 
 void ModelImpl::report()
@@ -161,8 +165,8 @@ void ModelImpl::simulate(const double start, const double end, const double laps
 {
     double* expressions_results = new double[flows.size()];
     int j;
-
-    for(double i = start; i <= end; i += lapse)
+    clock = start;
+    for(; clock <= end; clock += lapse)
     {
         j = 0;
         for(auto flow : flows)
