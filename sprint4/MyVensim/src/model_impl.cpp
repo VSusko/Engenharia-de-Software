@@ -95,7 +95,6 @@ bool ModelImpl::add(System* s)
 {
     if(this->exists(s))
     {
-        //cout << "ERROR! A COMPONENT NAMED "<< s->getName() << " ALREADY EXISTS!" << endl;
         return false;
     }
 
@@ -108,7 +107,6 @@ bool ModelImpl::add(Flow* f)
 {
     if(this->exists(f))
     {
-        //cout << "ERROR! A COMPONENT NAMED "<< f->getName() << " ALREADY EXISTS!" << endl;
         return false;
     }
 

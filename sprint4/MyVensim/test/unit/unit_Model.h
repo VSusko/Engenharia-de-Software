@@ -107,14 +107,6 @@ class unit_Model
         void testModelGetters();
 
         /**
-         * @brief Test for the report functionality of the Model class.
-         * 
-         * Since the report method just prints all systems informations, this function redirects
-         * the output flow to a buffer that is going to be compared with the expected output 
-         */
-        void testModelReport();
-
-        /**
          * @brief Test for the exists method of the Model class.
          * 
          * This test checks if the method exists is actually looking for an object in the model and returning
