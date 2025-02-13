@@ -1,6 +1,16 @@
 #ifndef MODEL_H
 #define MODEL_H
 
+#ifdef _WIN32
+  #ifdef BUILD_DLL
+    #define DLL_EXPORT __declspec(dllexport)
+  #else
+    #define DLL_EXPORT __declspec(dllimport)
+  #endif
+#else
+  #define DLL_EXPORT __attribute__((visibility("default")))
+#endif
+
 #include "flow.h"
 
 /**
@@ -9,7 +19,7 @@
  * 
  * 
  */
-class Model
+class DLL_EXPORT Model
 {
     public:
         //Destructor

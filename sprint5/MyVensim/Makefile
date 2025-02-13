@@ -1,51 +1,59 @@
 # Diretórios
-SRC_DIR 		:= src/
-F_TEST_DIR 		:= test/funcional/
-U_TEST_DIR 		:= test/unit/
-BIN_DIR 		:= bin/
+SRC_DIR         := src/
+F_TEST_DIR      := test/funcional/
+U_TEST_DIR      := test/unit/
+BIN_DIR         := bin/
 
-CXX 			:= g++
-CXXFLAGS 		:= -std=c++17 -Wall -O2 -g -I"$(BIN_DIR)"
-LDFLAGS 		:= 
+CXX             := g++
+CXXFLAGS        := -std=c++17 -Wall -O2 -g -fPIC -I"$(BIN_DIR)"
+LDFLAGS         := -shared
 
-EXEC_FUNC 		:= $(BIN_DIR)ftest.exe
-EXEC_UNIT 		:= $(BIN_DIR)utest.exe
+# Nome da biblioteca
+LIB_NAME        := lib
+LIB_SO          := $(BIN_DIR)$(LIB_NAME).so  # Para Linux/macOS
+LIB_DLL         := $(BIN_DIR)$(LIB_NAME).dll # Para Windows
 
 # Arquivos fonte
-SRC_FILES 		:= $(wildcard $(SRC_DIR)*.cpp)
-F_TEST_FILES 	:= $(wildcard $(F_TEST_DIR)*.cpp)
-U_TEST_FILES	:= $(wildcard $(U_TEST_DIR)*.cpp)
-objetos			:= $(foreach object,$(subst .cpp,.o,$(subst $(SRC_DIR),,$(SRC_FILES))),$(BIN_DIR)$(object))
+SRC_FILES       := $(wildcard $(SRC_DIR)*.cpp)
+F_TEST_FILES    := $(wildcard $(F_TEST_DIR)*.cpp)
+U_TEST_FILES    := $(wildcard $(U_TEST_DIR)*.cpp)
+OBJ_FILES       := $(patsubst $(SRC_DIR)%.cpp, $(BIN_DIR)%.o, $(SRC_FILES))
 
-biblioteca_nome	:= bibvictor.lib
-biblioteca		:= $(BIN_DIR)$(biblioteca_nome)
+# Executáveis de teste
+EXEC_FUNC       := $(BIN_DIR)ftest.exe
+EXEC_UNIT       := $(BIN_DIR)utest.exe
 
-ftest			:= $(BIN_DIR)ftest.exe
-utest			:= $(BIN_DIR)utest.exe
+# Alvo padrão
+build: $(LIB_SO) $(EXEC_FUNC) $(EXEC_UNIT)
+	@echo "Compilação concluída!"
 
-build_and_run: build 
+# Criando a biblioteca dinâmica no Linux/macOS
+$(LIB_SO): $(OBJ_FILES)
+	$(CXX) $(LDFLAGS) -o $@ $^
 
-build: $(ftest) $(utest)
-	@echo Tudo certo.
-	
+# Criando a biblioteca dinâmica no Windows
+$(LIB_DLL): $(OBJ_FILES)
+	$(CXX) $(LDFLAGS) -o $@ $^ -Wl,--out-implib,$(BIN_DIR)/libmysim.a
 
-$(ftest): $(biblioteca) $(F_TEST_FILES)
-	@g++ $(F_TEST_DIR)*.cpp -o $@ -L"$(BIN_DIR)" -l:"$(biblioteca_nome)" $(CXXFLAGS)
-
-$(utest): $(biblioteca) $(U_TEST_FILES)
-	@g++ $(U_TEST_DIR)*.cpp -o $@ -L"$(BIN_DIR)" -l:"$(biblioteca_nome)" $(CXXFLAGS)
-
-# g++ $(CXXFLAGS) -shared -o $@ $(objetos)
-$(biblioteca): $(objetos)
-	@ar cr $@ $^ 
-
+# Compilando arquivos objeto
 $(BIN_DIR)%.o: $(SRC_DIR)%.cpp
-	@g++ -c $^ -o $@ $(CXXFLAGS)
+	@mkdir -p $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Limpeza dos arquivos objeto e executáveis
+# Compilação dos testes funcionais
+$(EXEC_FUNC): $(F_TEST_FILES) $(LIB_SO)
+	$(CXX) $^ -o $@ -L"$(BIN_DIR)" -lmysim $(CXXFLAGS)
+
+# Compilação dos testes unitários
+$(EXEC_UNIT): $(U_TEST_FILES) $(LIB_SO)
+	$(CXX) $^ -o $@ -L"$(BIN_DIR)" -lmysim $(CXXFLAGS)
+
+# Limpeza
 clean:
-	@rm -f $(BIN_DIR)/*.o $(EXEC)
+	@rm -f $(BIN_DIR)/*.o $(BIN_DIR)/*.so $(BIN_DIR)/*.dll $(BIN_DIR)/*.a $(EXEC_FUNC) $(EXEC_UNIT)
+	@echo "Arquivos limpos!"
 
+# Rodar testes
 run_functional: $(EXEC_FUNC)
 	@./$(EXEC_FUNC)
 

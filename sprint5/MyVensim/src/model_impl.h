@@ -11,7 +11,7 @@
  * methods to manage the components (add, remove) and perform operations such
  * as simulation and reporting.
  */
-class ModelImpl : public Model
+class DLL_EXPORT ModelImpl : public Model
 {
     friend class unit_Model;
 
