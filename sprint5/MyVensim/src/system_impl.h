@@ -38,7 +38,7 @@ class SystemImpl : public System
          * @param _name Name of the system
          * @param _value Initial value of the system
          */
-        SystemImpl(const string name, const double value);
+        SystemImpl(string name, double value);
 
         /**
          * @brief Copy constructor

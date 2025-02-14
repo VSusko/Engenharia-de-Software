@@ -5,11 +5,11 @@ U_TEST_DIR      := test/unit/
 BIN_DIR         := bin/
 
 CXX             := g++
-CXXFLAGS        := -std=c++17 -Wall -O2 -g -fPIC -I"$(BIN_DIR)"
+CXXFLAGS        := -Wall -O2 -g -fPIC -I"$(BIN_DIR)"
 LDFLAGS         := -shared
 
 # Nome da biblioteca
-LIB_NAME        := lib
+LIB_NAME        := libmyvensim
 LIB_SO          := $(BIN_DIR)$(LIB_NAME).so  # Para Linux/macOS
 LIB_DLL         := $(BIN_DIR)$(LIB_NAME).dll # Para Windows
 
@@ -20,6 +20,7 @@ U_TEST_FILES    := $(wildcard $(U_TEST_DIR)*.cpp)
 OBJ_FILES       := $(patsubst $(SRC_DIR)%.cpp, $(BIN_DIR)%.o, $(SRC_FILES))
 
 # Executáveis de teste
+EXEC_MAIN       := $(BIN_DIR)test.exe
 EXEC_FUNC       := $(BIN_DIR)ftest.exe
 EXEC_UNIT       := $(BIN_DIR)utest.exe
 
@@ -41,19 +42,26 @@ $(BIN_DIR)%.o: $(SRC_DIR)%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Compilação dos testes funcionais
+$(EXEC_MAIN): $(SRC_FILES) $(LIB_SO)
+	$(CXX) $^ -o $@ -L"$(BIN_DIR)" -lmyvensim $(CXXFLAGS)
+
+# Compilação dos testes funcionais
 $(EXEC_FUNC): $(F_TEST_FILES) $(LIB_SO)
-	$(CXX) $^ -o $@ -L"$(BIN_DIR)" -lmysim $(CXXFLAGS)
+	$(CXX) $^ -o $@ -L"$(BIN_DIR)" -lmyvensim $(CXXFLAGS)
 
 # Compilação dos testes unitários
 $(EXEC_UNIT): $(U_TEST_FILES) $(LIB_SO)
-	$(CXX) $^ -o $@ -L"$(BIN_DIR)" -lmysim $(CXXFLAGS)
+	$(CXX) $^ -o $@ -L"$(BIN_DIR)" -lmyvensim $(CXXFLAGS)
 
 # Limpeza
 clean:
-	@rm -f $(BIN_DIR)/*.o $(BIN_DIR)/*.so $(BIN_DIR)/*.dll $(BIN_DIR)/*.a $(EXEC_FUNC) $(EXEC_UNIT)
+	@rm -f $(BIN_DIR)/*.o $(BIN_DIR)/*.so $(BIN_DIR)/*.dll $(BIN_DIR)/*.a $(EXEC_MAIN) $(EXEC_FUNC) $(EXEC_UNIT)
 	@echo "Arquivos limpos!"
 
 # Rodar testes
+run_main: $(EXEC_MAIN)
+	@./$(EXEC_MAIN)
+
 run_functional: $(EXEC_FUNC)
 	@./$(EXEC_FUNC)
 
