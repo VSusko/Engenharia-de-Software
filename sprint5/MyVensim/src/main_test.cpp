@@ -1,13 +1,13 @@
-#include "flow_factory.h"
-#include "system_factory.h"
 #include "model_factory.h"
 
 
 int main()
 {
-    System *system1 = SystemFactory::createSystem("s1", 10);
-    System *system2 = SystemFactory::createSystem("s2", 20);
-    Flow *flow = FlowFactory::createFlow("flow1", system1, system2);
+    ModelFactory &f1 = ModelFactory::getInstace();
+
+    System *system1 = f1.createSystem("s1", 10);
+    System *system2 = f1.createSystem("s2", 20);
+    Flow *flow = f1.createFlow("flow1", system1, system2);
     Model *model = ModelFactory::createModel("m1");
 
     cout << "System 1: " << system1->getName() << " (" << system1->getValue() << ")\n";
