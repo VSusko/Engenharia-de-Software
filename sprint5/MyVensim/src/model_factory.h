@@ -7,12 +7,12 @@
 
 /**
  * @class FlowMainTest
- * @brief Derived class from FlowImpl that will be used on a main test
+ * @brief Derived class from FlowImpl that will be used on tests
  */
-class FlowMainTest : public FlowImpl {
+class FlowTest : public FlowImpl {
 public:
-    FlowMainTest() {}
-    FlowMainTest(string name, System* source, System* target)
+    FlowTest() {}
+    FlowTest(string name, System* source, System* target)
         : FlowImpl(name, source, target) {}
 
     virtual double execute() override { 
@@ -30,7 +30,7 @@ private:
 
 public:
 
-    static ModelFactory& getInstace()
+    static ModelFactory& getInstance()
     {
         static ModelFactory m;
         return m;
@@ -85,7 +85,7 @@ public:
      */
     static Flow* createFlow()
     {
-        return new FlowMainTest();
+        return new FlowTest();
     }
 
     /**
@@ -95,7 +95,7 @@ public:
      */
     static Flow* createFlow(const string& name, System* source, System* target)
     {
-        return new FlowMainTest(name, source, target);
+        return new FlowTest(name, source, target);
     }
 };
 

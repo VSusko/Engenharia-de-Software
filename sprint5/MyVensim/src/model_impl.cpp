@@ -149,6 +149,9 @@ void ModelImpl::clear()
     
     for(auto system : systems)
         system->clear();
+
+    flows.clear();
+    systems.clear();
 }
 
 void ModelImpl::report()

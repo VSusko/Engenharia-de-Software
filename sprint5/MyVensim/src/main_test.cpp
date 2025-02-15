@@ -3,7 +3,7 @@
 
 int main()
 {
-    ModelFactory &f1 = ModelFactory::getInstace();
+    ModelFactory &f1 = ModelFactory::getInstance();
 
     System *system1 = f1.createSystem("s1", 10);
     System *system2 = f1.createSystem("s2", 20);

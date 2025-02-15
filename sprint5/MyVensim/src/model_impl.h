@@ -14,6 +14,7 @@
 class ModelImpl : public Model
 {
     friend class unit_Model;
+    friend class ModelFactory;
 
     private:
         string name; /**< Name of the model */
