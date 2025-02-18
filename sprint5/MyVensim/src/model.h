@@ -100,7 +100,7 @@ class Model
          * @param s Pointer to the system to be added
          * @return True if the system was added, false if it already exists
          */
-        virtual bool add(System* s) = 0;
+        virtual void add(System* s) = 0;
 
         /**
          * @brief Adds a flow to the model
@@ -110,7 +110,7 @@ class Model
          * @param f Pointer to the flow to be added
          * @return True if the flow was added, false if it already exists
          */
-        virtual bool add(Flow* f) = 0;
+        virtual void add(Flow* f) = 0;
 
         /**
          * @brief Removes a system from the model
@@ -132,25 +132,17 @@ class Model
          */
         virtual bool remove(Flow* f) = 0;
 
-        /**
-         * @brief Checks if a flow exists in the model
-         * 
-         * Searches for a flow in the model by name.
-         * 
-         * @param f Pointer to the flow to be checked
-         * @return True if the flow exists, false otherwise
-         */
-        virtual bool exists(Flow* f) = 0;
+        static Model* createModel(const string name);
 
-        /**
-         * @brief Checks if a system exists in the model
-         * 
-         * Searches for a system in the model by name.
-         * 
-         * @param f Pointer to the system to be checked
-         * @return True if the system exists, false otherwise
-         */
-        virtual bool exists(System* f) = 0;
+        virtual System* createSystem(string name = "", double value = 0) = 0;
+
+        template <typename T_FLOW_IMPL>
+        Flow* createFlow(string name, System* src = NULL, System* trg = NULL)
+        {
+            Flow* f = new T_FLOW_IMPL(name,src,trg);
+            add(f);
+            return f;
+        }
 };
 
 

@@ -1,8 +1,9 @@
-#include "model_factory.h"
+//#include "model_impl.h"
 
 
 int main()
 {
+    /*
     ModelFactory &f1 = ModelFactory::getInstance();
 
     System *system1 = f1.createSystem("s1", 10);
@@ -21,6 +22,6 @@ int main()
     delete system2;
     delete flow;
     delete model;
-
+    */
     return 0;
 }

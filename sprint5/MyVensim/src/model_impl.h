@@ -2,6 +2,8 @@
 #define MODEL_IMPL_H
 
 #include "model.h"
+#include "flow_impl.h"
+#include "system_impl.h"
 
 /**
  * @class ModelImpl
@@ -14,33 +16,33 @@
 class ModelImpl : public Model
 {
     friend class unit_Model;
-    friend class ModelFactory;
 
     private:
         string name; /**< Name of the model */
         double clock; /**< Clock of the model */
-        vector<System*> systems; /**< List of systems in the model */
-        vector<Flow*> flows; /**< List of flows in the model */
-        
-    public:
+        vector<System*> systems; /**< List of systems in the factory */
+        vector<Flow*> flows; /**< List of flows in the factory */
+        vector<Model*> models; /**< List of models in the factory */
 
-        //===================Constructors===================//
-        
+    protected:
+
         /**
          * @brief Default constructor
          * 
          * Initializes the model with an empty name and no systems or flows.
          */
-        ModelImpl();
+         ModelImpl();
 
-        /**
-         * @brief Constructor with a model name
-         * 
-         * Initializes the model with a specified name.
-         * 
-         * @param _name Name of the model
-         */
-        ModelImpl(const string name);
+         /**
+          * @brief Constructor with a model name
+          * 
+          * Initializes the model with a specified name.
+          * 
+          * @param _name Name of the model
+          */
+         ModelImpl(const string name);
+
+    public:
 
         /**
          * @brief Destructor
@@ -48,7 +50,7 @@ class ModelImpl : public Model
          * Destroys the Model object. The destructor does not need to free resources explicitly,
          * as the class uses smart pointers or managed resources.
          */
-        virtual ~ModelImpl(){};
+        virtual ~ModelImpl();
 
         //===================Getters and Setters===================//
 
@@ -129,7 +131,7 @@ class ModelImpl : public Model
          * @param s Pointer to the system to be added
          * @return True if the system was added, false if it already exists
          */
-        bool add(System* s);
+        void add(System* s);
 
         /**
          * @brief Adds a flow to the model
@@ -139,7 +141,7 @@ class ModelImpl : public Model
          * @param f Pointer to the flow to be added
          * @return True if the flow was added, false if it already exists
          */
-        bool add(Flow* f);
+        void add(Flow* f);
 
         /**
          * @brief Removes a system from the model
@@ -160,28 +162,22 @@ class ModelImpl : public Model
          * @return True if the flow was removed, false if it was not found
          */
         bool remove(Flow* f);
-        
+
+        /**
+        * @brief Creates a new System instance with a name.
+        * @param name The name of the System.
+        * @return Pointer to the newly created System.
+        */
+        System* createSystem(string name = "", double value = 0);
+
+        /**
+        * @brief Creates a new Model instance with a name.
+        * @param name The name of the model.
+        * @return Pointer to the newly created Model.
+        */
+        static Model* createModel(const string name);
+
     private:
-
-        /**
-         * @brief Checks if a flow exists in the model
-         * 
-         * Searches for a flow in the model by name.
-         * 
-         * @param f Pointer to the flow to be checked
-         * @return True if the flow exists, false otherwise
-         */
-        bool exists(Flow* f);
-
-        /**
-         * @brief Checks if a system exists in the model
-         * 
-         * Searches for a system in the model by name.
-         * 
-         * @param f Pointer to the system to be checked
-         * @return True if the system exists, false otherwise
-         */
-        bool exists(System* f);
 
         /**
          * @brief Copy assignment operator overload

@@ -2,8 +2,6 @@
 #define FUNCIONAL_TESTS
 
 #include "../../src/model_impl.h"
-#include "../../src/system_impl.h"
-#include "../../src/flow_impl.h"
 #include <cassert>
 #include <cmath>
 
