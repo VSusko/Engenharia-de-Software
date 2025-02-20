@@ -1,6 +1,9 @@
 #include "model_impl.h"
 
-//===================Constructors===================//
+//Global model
+vector<Model*> ModelImpl::models;
+
+//===================Constructors & Destructor===================//
 
 ModelImpl::ModelImpl(){ name = ""; }
 
@@ -11,6 +14,19 @@ ModelImpl::ModelImpl(const ModelImpl &other)
     name = other.name;
     flows.insert(flows.begin(), other.flows.begin(), other.flows.end());
     systems.insert(systems.begin(), other.systems.begin(), other.systems.end());
+}
+
+ModelImpl::~ModelImpl()
+{
+    for(System* system : systems)
+        delete system;
+
+    systems.clear();
+    
+    for(Flow* flow : flows)
+        delete flow;
+
+    flows.clear();
 }
 
 ModelImpl ModelImpl::operator=(const ModelImpl &other)
@@ -31,6 +47,14 @@ ModelImpl ModelImpl::operator=(const ModelImpl &other)
 //===================Getters and Setters===================//
 
 void ModelImpl::setName(string name) { this->name = name; }
+
+/*
+static ModelImpl& getInstance() {
+    static ModelImpl instance;
+    return instance;
+}
+*/
+
 string ModelImpl::getName() const { return this->name; }
 double ModelImpl::getClock() const { return this->clock; }
 
@@ -53,6 +77,11 @@ Flow* ModelImpl::getFlow(const string name) const
 }
 
 //===================Class functions===================//
+
+void ModelImpl::add(Model* m)
+{
+    this->models.push_back(m);
+}
 
 void ModelImpl::add(System* s)
 {
@@ -130,7 +159,7 @@ void ModelImpl::simulate(const double start, const double end, const double laps
         for(auto flow : flows) 
         {
             flow->getSource()->setValue(flow->getSource()->getValue() - expressions_results[j]);
-
+            
             flow->getTarget()->setValue(flow->getTarget()->getValue() + expressions_results[j++]);
         }
     }
@@ -138,15 +167,16 @@ void ModelImpl::simulate(const double start, const double end, const double laps
     delete [] expressions_results;
 }
 
-Model* Model::createModel(const string name){
-    Model* model =  ModelImpl::createModel(name);
+Model* ModelImpl::createModel(const string name)
+{
+    Model* model = new ModelImpl(name);
     models.push_back(model);
     return model;
 }
 
-static Model* createModel(const string name)
+Model* Model::createModel(const string name)
 {
-    return new ModelImpl(name);
+    return ModelImpl::createModel(name);
 }
 
 System* ModelImpl::createSystem(string name, double value)

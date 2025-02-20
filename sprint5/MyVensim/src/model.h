@@ -29,6 +29,8 @@ class Model
          */
         virtual void setName(string string) = 0;
 
+        //static ModelImpl& getInstance() = 0;
+
         /**
          * @brief Gets the name of the model
          * 
@@ -100,6 +102,16 @@ class Model
          * @param s Pointer to the system to be added
          * @return True if the system was added, false if it already exists
          */
+        virtual void add(Model* s) = 0;
+
+        /**
+         * @brief Adds a system to the model
+         * 
+         * Adds a system to the model if it does not already exist.
+         * 
+         * @param s Pointer to the system to be added
+         * @return True if the system was added, false if it already exists
+         */
         virtual void add(System* s) = 0;
 
         /**
@@ -132,10 +144,31 @@ class Model
          */
         virtual bool remove(Flow* f) = 0;
 
+        /**
+         * @brief Creates a new model
+         * 
+         * @param name Model name
+         * @return A pointer of model Model class
+         */
         static Model* createModel(const string name);
 
+        /**
+         * @brief Creates a new system
+         * 
+         * @param name System name
+         * @param value System value
+         * @return A pointer of System class
+         */
         virtual System* createSystem(string name = "", double value = 0) = 0;
 
+        /**
+         * @brief Creates a new flow
+         * 
+         * @param name Flow name
+         * @param src Source system
+         * @param trg Target system
+         * @return A pointer of Flow class
+         */
         template <typename T_FLOW_IMPL>
         Flow* createFlow(string name, System* src = NULL, System* trg = NULL)
         {

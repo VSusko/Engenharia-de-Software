@@ -22,7 +22,7 @@ class ModelImpl : public Model
         double clock; /**< Clock of the model */
         vector<System*> systems; /**< List of systems in the factory */
         vector<Flow*> flows; /**< List of flows in the factory */
-        vector<Model*> models; /**< List of models in the factory */
+        static vector<Model*> models; /**< List of models in the factory */
 
     protected:
 
@@ -60,6 +60,8 @@ class ModelImpl : public Model
          * @param _string Name of the model
          */
         void setName(string string);
+
+        //static ModelImpl& getInstance();
 
         /**
          * @brief Gets the name of the model
@@ -122,26 +124,6 @@ class ModelImpl : public Model
          * Prints the name and value of each system currently in the model.
          */
         void report();
-        
-        /**
-         * @brief Adds a system to the model
-         * 
-         * Adds a system to the model if it does not already exist.
-         * 
-         * @param s Pointer to the system to be added
-         * @return True if the system was added, false if it already exists
-         */
-        void add(System* s);
-
-        /**
-         * @brief Adds a flow to the model
-         * 
-         * Adds a flow to the model if it does not already exist.
-         * 
-         * @param f Pointer to the flow to be added
-         * @return True if the flow was added, false if it already exists
-         */
-        void add(Flow* f);
 
         /**
          * @brief Removes a system from the model
@@ -164,20 +146,53 @@ class ModelImpl : public Model
         bool remove(Flow* f);
 
         /**
-        * @brief Creates a new System instance with a name.
-        * @param name The name of the System.
-        * @return Pointer to the newly created System.
-        */
+         * @brief Creates a new system
+         * 
+         * @param name System name
+         * @param value System value
+         * @return A pointer of System class
+         */
         System* createSystem(string name = "", double value = 0);
 
         /**
-        * @brief Creates a new Model instance with a name.
-        * @param name The name of the model.
-        * @return Pointer to the newly created Model.
-        */
+         * @brief Creates a new model
+         * 
+         * @param name Model name
+         * @return A pointer of model Model class
+         */
         static Model* createModel(const string name);
 
     private:
+
+        /**
+        * @brief Adds a system to the model
+        * 
+        * Adds a system to the model if it does not already exist.
+        * 
+        * @param s Pointer to the system to be added
+        * @return True if the system was added, false if it already exists
+        */
+        void add(Model* s);
+
+        /**
+        * @brief Adds a system to the model
+        * 
+        * Adds a system to the model if it does not already exist.
+        * 
+        * @param s Pointer to the system to be added
+        * @return True if the system was added, false if it already exists
+        */
+        void add(System* s);
+ 
+        /**
+        * @brief Adds a flow to the model
+        * 
+        * Adds a flow to the model if it does not already exist.
+        * 
+        * @param f Pointer to the flow to be added
+        * @return True if the flow was added, false if it already exists
+        */
+        void add(Flow* f);
 
         /**
          * @brief Copy assignment operator overload

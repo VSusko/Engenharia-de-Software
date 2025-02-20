@@ -12,6 +12,7 @@
 class FlowImpl : public Flow
 {
     friend class unit_Flow;
+    friend class FlowUTest;
     friend class ModelFactory;
     
     protected:

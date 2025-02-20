@@ -25,12 +25,8 @@ void exponentialFuncionalTest() {
 
     Flow* flow = model->createFlow<Exponential>("exp", pop1, pop2);
 
-    model->add(pop1);
-    model->add(pop2);
-    model->add(flow);
-    
     model->simulate(0, 99, 1);
-
+    
     assert(_approximate(fabs(pop1->getValue() - 36.6032) < 0.0001));
     assert(_approximate(fabs(pop2->getValue() - 63.3968) < 0.0001));
 
@@ -43,11 +39,8 @@ void logisticalFuncionalTest() {
     System* p1 = model->createSystem("p1", 100);
     System* p2 = model->createSystem("p2", 10);
 
-    Flow* flow = model->getInstance().createFlow<Logistical>("log", p1, p2);
-
-    model->add(p1);
-    model->add(p2);
-    model->add(flow);
+    //Flow* flow = model->getInstance().createFlow<Logistical>("log", p1, p2);
+    Flow* flow = model->createFlow<Logistical>("log", p1, p2);
     
     model->simulate(0, 99, 1);
 
@@ -60,7 +53,6 @@ void logisticalFuncionalTest() {
 void complexFuncionalTest() {
     Model* model = Model::createModel("model");
 
-    System* q1 = model->createSystem("q1", 100);
     System* q1 = model->createSystem("q1", 100);
     System* q2 = model->createSystem("q2", 0);
     System* q3 = model->createSystem("q3", 100);
