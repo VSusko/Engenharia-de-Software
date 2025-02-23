@@ -17,6 +17,8 @@ double Complex::execute() {
     return (source->getValue() * 0.01);
 }
 
+//===================Functional Tests===================//
+
 void exponentialFuncionalTest() {
     Model* model = Model::createModel("model");
 

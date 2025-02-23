@@ -1,7 +1,11 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
-#include "mySim.h"
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
 
 /**
  * @class System
