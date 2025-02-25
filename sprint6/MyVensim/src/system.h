@@ -11,7 +11,9 @@ using namespace std;
  * @class System
  * @brief Interface for System class
  * 
- * 
+ * This class defines a system with a name and a value. It provides methods
+ * for getting and setting the system's properties, as well as operations
+ * like clearing the system's value.
  */
 class System
 {

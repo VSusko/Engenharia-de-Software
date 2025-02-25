@@ -7,7 +7,9 @@
  * @class Model
  * @brief Interface for Model class
  * 
- * 
+ * The Model class defines a model that holds systems and flows. It provides
+ * methods to manage the components (add, remove) and perform operations such
+ * as simulation and reporting.
  */
 class Model
 {
@@ -25,7 +27,7 @@ class Model
         /**
          * @brief Sets the name of the model
          * 
-         * @param _string Name of the model
+         * @param string Name of the model
          */
         virtual void setName(string string) = 0;
 
@@ -50,7 +52,7 @@ class Model
          * 
          * Searches for a system in the model by its name.
          * 
-         * @param _name Name of the system to search for
+         * @param name Name of the system to search for
          * @return Pointer to the system if found, nullptr otherwise
          */
         virtual System* getSystem(const string name) const = 0;
@@ -100,17 +102,6 @@ class Model
          * Adds a system to the model if it does not already exist.
          * 
          * @param s Pointer to the system to be added
-         * @return True if the system was added, false if it already exists
-         */
-        virtual void add(Model* s) = 0;
-
-        /**
-         * @brief Adds a system to the model
-         * 
-         * Adds a system to the model if it does not already exist.
-         * 
-         * @param s Pointer to the system to be added
-         * @return True if the system was added, false if it already exists
          */
         virtual void add(System* s) = 0;
 
@@ -120,7 +111,6 @@ class Model
          * Adds a flow to the model if it does not already exist.
          * 
          * @param f Pointer to the flow to be added
-         * @return True if the flow was added, false if it already exists
          */
         virtual void add(Flow* f) = 0;
 

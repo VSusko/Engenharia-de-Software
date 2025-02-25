@@ -16,10 +16,10 @@
  * 
  * 
  */
-class Exponential : public FlowImpl {
+class Exponential : public FlowHandle {
     public:
         Exponential(){}
-        Exponential(string _name, System* _source, System* _target) : FlowImpl(_name,_source,_target){}
+        Exponential(string name, System* source, System* target) : FlowHandle(name,source,target){}
         virtual double execute();
 };
 
@@ -29,10 +29,10 @@ class Exponential : public FlowImpl {
  * 
  * 
  */
-class Logistical : public FlowImpl {
+class Logistical : public FlowHandle {
     public:
         Logistical(){}
-        Logistical(string _name, System* _source, System* _target) : FlowImpl(_name,_source,_target){}
+        Logistical(string name, System* source, System* target) : FlowHandle(name,source,target){}
         virtual double execute();
 };
 
@@ -42,10 +42,10 @@ class Logistical : public FlowImpl {
  * 
  * 
  */
-class Complex : public FlowImpl {
+class Complex : public FlowHandle {
     public:
         Complex(){}
-        Complex(string _name, System* _source, System* _target) : FlowImpl(_name,_source,_target){}
+        Complex(string name, System* source, System* target) : FlowHandle(name,source,target){}
         virtual double execute();
 };
 

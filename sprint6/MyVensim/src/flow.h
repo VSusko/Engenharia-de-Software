@@ -5,7 +5,7 @@
 
 /**
  * @class Flow
- * @brief Interface for flow class
+ * @brief Changes the current state of a system by a mathematic expression. Needs inheritance to be used
  * 
  * 
  */

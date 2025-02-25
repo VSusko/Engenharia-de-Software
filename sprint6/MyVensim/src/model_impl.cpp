@@ -1,8 +1,5 @@
 #include "model_impl.h"
 
-//Global model
-vector<Model*> ModelImpl::models;
-
 //===================Constructors & Destructor===================//
 
 ModelImpl::ModelImpl(){ name = ""; }
@@ -46,7 +43,7 @@ ModelImpl ModelImpl::operator=(const ModelImpl &other)
 
 //===================Getters and Setters===================//
 
-void ModelImpl::setName(string name) { this->name = name; }
+void ModelImpl::setName(const string name) { this->name = name; }
 
 /*
 static ModelImpl& getInstance() {
@@ -78,10 +75,6 @@ Flow* ModelImpl::getFlow(const string name) const
 
 //===================Class functions===================//
 
-void ModelImpl::add(Model* m)
-{
-    this->models.push_back(m);
-}
 
 void ModelImpl::add(System* s)
 {
@@ -167,21 +160,35 @@ void ModelImpl::simulate(const double start, const double end, const double laps
     delete [] expressions_results;
 }
 
-Model* ModelImpl::createModel(const string name)
-{
-    Model* model = new ModelImpl(name);
-    models.push_back(model);
-    return model;
+//Model instance
+ModelImpl* ModelImpl::instance = nullptr;
+
+Model* ModelImpl::createModel(const string name) {
+    if (instance == nullptr) {
+        instance = new ModelImpl(name);
+    }
+    return instance;
 }
 
-Model* Model::createModel(const string name)
-{
+Model* Model::createModel(const string name) {
     return ModelImpl::createModel(name);
 }
 
+// Model* ModelImpl::createModel(const string name)
+// {
+//     Model* model = new ModelHandle(name);
+//     models.push_back(model);
+//     return model;
+// }
+
+// Model* Model::createModel(const string name)
+// {
+//     return ModelImpl::createModel(name);
+// }
+
 System* ModelImpl::createSystem(string name, double value)
 {
-    System* system = new SystemImpl(name, value);
+    System* system = new SystemHandle(name, value);
     add(system);
     return system;
 }

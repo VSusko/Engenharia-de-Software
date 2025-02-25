@@ -9,9 +9,7 @@
  * @class SystemBody
  * @brief Represents the body for the System class
  * 
- * This class defines a system with a name and a value. It provides methods
- * for getting and setting the system's properties, as well as operations
- * like clearing the system's value.
+ *
  */
 class SystemBody : public Body
 {
@@ -19,7 +17,7 @@ class SystemBody : public Body
     friend class ModelFactory;
 
     private:
-        string name; /**< Name of the system */
+        string name;  /**< Name of the system */
         double value; /**< Value of the system */
 
     public:
@@ -77,28 +75,28 @@ class SystemBody : public Body
          * 
          * @param _time The value to be set for the system
          */
-        void setValue(double time);
+        virtual void setValue(double time);
         
         /**
          * @brief Sets the name of the system
          * 
          * @param _name The name to be set for the system
          */
-        void setName(const string& name);
+        virtual void setName(const string& name);
         
         /**
          * @brief Gets the value of the system
          * 
          * @return The current value of the system
          */
-        double getValue() const;
+        virtual double getValue() const;
 
         /**
          * @brief Gets the name of the system
          * 
          * @return The name of the system
          */
-        string getName() const;
+        virtual string getName() const;
 
         //===================Class functions===================//
 
@@ -107,7 +105,7 @@ class SystemBody : public Body
          * 
          * Resets the system's value to 0.
          */
-        void clear();       
+        virtual void clear();       
 };
 
 
@@ -120,17 +118,23 @@ class SystemHandle : public System, public Handle<SystemBody>
 {
     public:
 
-        SystemHandle(const string name, const double value)
+        SystemHandle()
         {
-            pImpl->setName(name);
-            pImpl->setValue(value);
+            pImpl_->setName("");
+            pImpl_->setValue(0);
         };
 
-        double getValue()                { return pImpl->getValue(); }
-        string getName()                 { return pImpl->getName();  } 
-        void setValue(double time)       { pImpl->setValue();        }
-        void setName(const string& name) { pImpl->setName();         }
-        void clear()                     { pImpl->clear();           }
+        SystemHandle(const string name, const double value)
+        {
+            pImpl_->setName(name);
+            pImpl_->setValue(value);
+        };
+
+        virtual double getValue() const          { return pImpl_->getValue(); }
+        virtual string getName() const           { return pImpl_->getName();  } 
+        virtual void setValue(double time)       { pImpl_->setValue(time);    }
+        virtual void setName(const string& name) { pImpl_->setName(name);     }
+        virtual void clear()                     { pImpl_->clear();           }
 
 };
 

@@ -7,24 +7,22 @@
 
 /**
  * @class ModelImpl
- * @brief Represents a system model consisting of systems and flows.
+ * @brief Represents the body for the Model class 
  * 
- * The Model class defines a model that holds systems and flows. It provides
- * methods to manage the components (add, remove) and perform operations such
- * as simulation and reporting.
+ * 
  */
 class ModelImpl : public Model
 {
     friend class unit_Model;
-
+    
     private:
-        string name; /**< Name of the model */
-        double clock; /**< Clock of the model */
-        vector<System*> systems; /**< List of systems in the factory */
-        vector<Flow*> flows; /**< List of flows in the factory */
-        static vector<Model*> models; /**< List of models in the factory */
+        string name;                  /**< Name of the model */
+        double clock;                 /**< Clock of the model */
+        vector<System*> systems;      /**< List of systems in the factory */
+        vector<Flow*> flows;          /**< List of flows in the factory */
+        static ModelImpl* instance;   /**< Model instance */
 
-    protected:
+    public:
 
         /**
          * @brief Default constructor
@@ -38,11 +36,10 @@ class ModelImpl : public Model
           * 
           * Initializes the model with a specified name.
           * 
-          * @param _name Name of the model
+          * @param name Name of the model
           */
          ModelImpl(const string name);
 
-    public:
 
         /**
          * @brief Destructor
@@ -57,9 +54,9 @@ class ModelImpl : public Model
         /**
          * @brief Sets the name of the model
          * 
-         * @param _string Name of the model
+         * @param name Name of the model
          */
-        void setName(string string);
+        void setName(const string name);
 
         //static ModelImpl& getInstance();
 
@@ -106,10 +103,10 @@ class ModelImpl : public Model
          * over a given time period.
          * 
          * @param initial Initial time for the simulation
-         * @param final Final time for the simulation
-         * @param lapse Time step between each iteration in the simulation
+         * @param end     Final time for the simulation
+         * @param lapse   Time step between each iteration in the simulation
          */
-        void simulate(double initial, double final, double lapse);
+        void simulate(double initial, double end, double lapse);
 
         /**
          * @brief Clears the model's systems and flows
@@ -172,16 +169,6 @@ class ModelImpl : public Model
         * @param s Pointer to the system to be added
         * @return True if the system was added, false if it already exists
         */
-        void add(Model* s);
-
-        /**
-        * @brief Adds a system to the model
-        * 
-        * Adds a system to the model if it does not already exist.
-        * 
-        * @param s Pointer to the system to be added
-        * @return True if the system was added, false if it already exists
-        */
         void add(System* s);
  
         /**
@@ -214,5 +201,6 @@ class ModelImpl : public Model
         ModelImpl(const ModelImpl &other);
 };
 
+    
 
 #endif

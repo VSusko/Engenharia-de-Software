@@ -3,32 +3,32 @@
 
 //===================Constructors===================//
 
-FlowImpl::FlowImpl() 
+FlowBody::FlowBody() 
 {
-    this->name = "";
+    this->name   = "";
     this->source = nullptr; 
     this->target = nullptr; 
 }
 
-FlowImpl::FlowImpl(string name, System* source, System* target)
+FlowBody::FlowBody(string name, System* source, System* target)
 {
-    this->name = name;
+    this->name   = name;
     this->source = source;
     this->target = target;
 }
 
-FlowImpl::FlowImpl(const FlowImpl &other)
+FlowBody::FlowBody(const FlowBody &other)
 {
-    this->name = other.name;
+    this->name   = other.name;
     this->source = other.source;
     this->target = other.target;
 }
 
-FlowImpl& FlowImpl::operator=(const FlowImpl &other)
+FlowBody& FlowBody::operator=(const FlowBody &other)
 {
     if (this != &other)
     {
-        name = other.name;
+        name   = other.name;
         source = other.source;
         target = other.target;
     }
@@ -37,16 +37,16 @@ FlowImpl& FlowImpl::operator=(const FlowImpl &other)
 
 //===================Getters and Setters===================//
 
-void FlowImpl::setTarget(System* s) { target = s; }
-void FlowImpl::setSource(System* s) { source = s; }
-void FlowImpl::setName(string name) { this->name = name; }
-System* FlowImpl::getSource() const { return source; }
-System* FlowImpl::getTarget() const { return target; }
-string  FlowImpl::getName() const { return name; }
+void FlowBody::setTarget(System* s) { target = s; }
+void FlowBody::setSource(System* s) { source = s; }
+void FlowBody::setName(string name) { this->name = name; }
+System* FlowBody::getSource() const { return source; }
+System* FlowBody::getTarget() const { return target; }
+string  FlowBody::getName() const   { return name; }
 
 //===================Class functions===================//
 
-void FlowImpl::clear() 
+void FlowBody::clear() 
 {
     source = nullptr;
     target = nullptr;
