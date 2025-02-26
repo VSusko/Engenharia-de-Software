@@ -1,21 +1,6 @@
 #include "funcional_tests.h"
 
-//===================Execute overriding===================//
 
-// Execute for the Exponential class
-double Exponential::execute() {
-    return (source->getValue() * 0.01);
-}
-
-// Execute for the Logistical class
-double Logistical::execute() {
-    return (target->getValue() * 0.01 * (1 - target->getValue() / 70));
-}
-
-// Execute for the Complex class
-double Complex::execute() {
-    return (source->getValue() * 0.01);
-}
 
 //===================Functional Tests===================//
 

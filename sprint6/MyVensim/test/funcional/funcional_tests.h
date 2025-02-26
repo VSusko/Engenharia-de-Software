@@ -20,7 +20,9 @@ class Exponential : public FlowHandle {
     public:
         Exponential(){}
         Exponential(string name, System* source, System* target) : FlowHandle(name,source,target){}
-        virtual double execute();
+        double execute(){
+            return (getSource()->getValue() * 0.01);
+        };
 };
 
 /**
@@ -33,7 +35,9 @@ class Logistical : public FlowHandle {
     public:
         Logistical(){}
         Logistical(string name, System* source, System* target) : FlowHandle(name,source,target){}
-        virtual double execute();
+        double execute(){
+            return (getTarget()->getValue() * 0.01 * (1 - getTarget()->getValue() / 70));
+        };
 };
 
 /**
@@ -46,7 +50,10 @@ class Complex : public FlowHandle {
     public:
         Complex(){}
         Complex(string name, System* source, System* target) : FlowHandle(name,source,target){}
-        virtual double execute();
+        double execute(){
+            return (getSource()->getValue() * 0.01);
+        } 
+        
 };
 
 //===================Functional Test functions===================//
