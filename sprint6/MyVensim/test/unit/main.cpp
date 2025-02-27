@@ -10,14 +10,16 @@ int main()
     unit_System unit_system;
     unit_Flow unit_flow;
     unit_Model unit_model;
+    
+    unit_model.runModelTests();
+    cout << "Model test: OK" << endl;
+    
     unit_system.runSystemTests();
     cout << "System test: OK" << endl;
 
     unit_flow.runFlowTests();
     cout << "Flow test: OK" << endl;
 
-    unit_model.runModelTests();
-    cout << "Model test: OK" << endl;
 
     return 0;
 }

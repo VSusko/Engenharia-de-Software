@@ -8,7 +8,7 @@ void exponentialFuncionalTest() {
     System* pop1 = model->createSystem("pop1", 100);
     System* pop2 = model->createSystem("pop2", 0);
 
-    Flow* flow = model->createFlow<Exponential>("exp", pop1, pop2);
+    model->createFlow<Exponential>("exp", pop1, pop2);
 
     model->simulate(0, 99, 1);
     
@@ -24,7 +24,7 @@ void logisticalFuncionalTest() {
     System* p1 = model->createSystem("p1", 100);
     System* p2 = model->createSystem("p2", 10);
 
-    Flow* flow = model->createFlow<Logistical>("log", p1, p2);
+    model->createFlow<Logistical>("log", p1, p2);
     
     model->simulate(0, 99, 1);
 
@@ -43,12 +43,12 @@ void complexFuncionalTest() {
     System* q4 = model->createSystem("q4", 0);
     System* q5 = model->createSystem("q5", 0);
 
-    Flow* flowG = model->createFlow<Complex>("g", q1, q3);
-    Flow* flowF = model->createFlow<Complex>("f", q1, q2);
-    Flow* flowR = model->createFlow<Complex>("r", q2, q5);
-    Flow* flowT = model->createFlow<Complex>("t", q2, q3);
-    Flow* flowU = model->createFlow<Complex>("u", q3, q4);
-    Flow* flowV = model->createFlow<Complex>("v", q4, q1);
+    model->createFlow<Complex>("g", q1, q3);
+    model->createFlow<Complex>("f", q1, q2);
+    model->createFlow<Complex>("r", q2, q5);
+    model->createFlow<Complex>("t", q2, q3);
+    model->createFlow<Complex>("u", q3, q4);
+    model->createFlow<Complex>("v", q4, q1);
 
     model->simulate(0, 99, 1);
 

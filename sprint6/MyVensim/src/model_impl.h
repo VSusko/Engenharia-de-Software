@@ -149,7 +149,7 @@ class ModelImpl : public Model
          * @param value System value
          * @return A pointer of System class
          */
-        System* createSystem(string name = "", double value = 0);
+        System* createSystem(string name, double value);
 
         /**
          * @brief Creates a new model

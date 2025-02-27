@@ -138,7 +138,7 @@ class Model
          * @param name Model name
          * @return A pointer of model Model class
          */
-        static Model* createModel(const string name);
+        static Model* createModel(const string name = "");
 
         /**
          * @brief Creates a new system
@@ -158,7 +158,7 @@ class Model
          * @return A pointer of Flow class
          */
         template <typename T_FLOW_IMPL>
-        Flow* createFlow(string name, System* src = NULL, System* trg = NULL)
+        Flow* createFlow(string name = "", System* src = NULL, System* trg = NULL)
         {
             Flow* f = new T_FLOW_IMPL(name,src,trg);
             add(f);

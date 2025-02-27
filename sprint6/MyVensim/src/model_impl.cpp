@@ -24,6 +24,8 @@ ModelImpl::~ModelImpl()
         delete flow;
 
     flows.clear();
+
+    delete this;
 }
 
 ModelImpl ModelImpl::operator=(const ModelImpl &other)
