@@ -1,7 +1,5 @@
 #include "funcional_tests.h"
 
-
-
 //===================Functional Tests===================//
 
 void exponentialFuncionalTest() {
@@ -26,7 +24,6 @@ void logisticalFuncionalTest() {
     System* p1 = model->createSystem("p1", 100);
     System* p2 = model->createSystem("p2", 10);
 
-    //Flow* flow = model->getInstance().createFlow<Logistical>("log", p1, p2);
     Flow* flow = model->createFlow<Logistical>("log", p1, p2);
     
     model->simulate(0, 99, 1);
