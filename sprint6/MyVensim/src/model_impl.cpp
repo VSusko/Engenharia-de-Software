@@ -111,14 +111,15 @@ bool ModelImpl::remove(System* s)
 
 void ModelImpl::clear()
 {
-    for(auto flow : flows)
-        flow->clear();
+    for(System* system : systems)
+        delete system;
+
+    systems.clear();
     
-    for(auto system : systems)
-        system->clear();
+    for(Flow* flow : flows)
+        delete flow;
 
     flows.clear();
-    systems.clear();
 }
 
 void ModelImpl::report()
@@ -161,7 +162,11 @@ Model* ModelImpl::createModel(const string name) {
     if (instance == nullptr) {
         instance = new ModelImpl(name);
     }
-    cout << "AYUDA SOY VENEZULANO" << endl;
+    else{   
+        instance->clear();
+        instance->setName(name);
+    }
+
     return instance;
 }
 

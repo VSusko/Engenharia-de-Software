@@ -43,32 +43,18 @@ class unit_System
         void testSystemParameterizedConstructor();
         
         /**
-         * @brief Test the copy assignment operator.
-         * 
-         * Creates a `SystemImpl` object, makes a copy using the assignment operator, and validates that the copy was made correctly.
-         */
-        void testSystemCopyOperator();
-        
-        /**
-         * @brief Test for the copy operator on the own object
-         * 
-         * This test ensures that the copy operator won't fail if used on the own object
-         */
-        void testSystemSelfAssignment();
-
-        /**
-         * @brief Test the copy constructor.
-         * 
-         * Creates a `SystemImpl` object, makes a copy using the copy constructor, and validates that the values are copied correctly.
-         */
-        void testSystemCopyConstructor();
-        
-        /**
          * @brief Test the clear function.
          * 
          * Creates a `SystemImpl` object, calls the `clear()` function to reset the value, and validates that the value is correctly reset to zero.
          */
         void testSystemClear();
+
+        /**
+         * @brief Test for the handle/body.
+         * 
+         */
+        void testHandleBodyMechanism();
+
 
         /**
          * @brief Run all system tests.

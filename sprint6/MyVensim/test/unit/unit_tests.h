@@ -2,10 +2,10 @@
 #define UNIT_TEST_H
 
 #include "../../src/model_impl.h"
-#include "../../src/handlebody.h"
 #include <cassert>
 #include <cmath>
 #include <sstream>
+
 
 /**
  * @class FlowUTest

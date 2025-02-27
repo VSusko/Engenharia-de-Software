@@ -2,11 +2,7 @@
 
 void unit_Model::testModelDefaultConstructor() {
     Model *model1 = model1->createModel();
-    cout << "Model name: " << dynamic_cast<ModelImpl*>(model1)->name << endl;
     assert(dynamic_cast<ModelImpl*>(model1)->name == "");
-    
-    delete model1;
-    ModelImpl::instance = nullptr;
 }
 
 void unit_Model::testModelParameterizedConstructor() {
@@ -45,23 +41,6 @@ void unit_Model::testModelRemoveFlow() {
     assert(model1->remove(f) == true);
 }
 
-/*
-void unit_Model::testModelAddDuplicatesSystem() {
-    Model *model1 = ModelImpl::createModel();
-    System* s1 = model1->createSystem("", 0);
-    
-    assert(model1->add(&s1) == true);
-    assert(model1->add(&s1) == false);
-}
-
-void unit_Model::testModelAddDuplicatesFlow() {
-    Model *model1 = ModelImpl::createModel();
-    FlowTest f1;
-    
-    assert(model1->add(&f1) == true);
-    assert(model1->add(&f1) == false); 
-}
-*/
 
 void unit_Model::testModelGetters() {
     Model *model1 = model1->createModel();
@@ -87,14 +66,6 @@ void unit_Model::testModelClear() {
     assert(dynamic_cast<ModelImpl*>(model1)->systems.empty());
     assert(dynamic_cast<ModelImpl*>(model1)->flows.empty());
 }
-
-/*
-void testSingletonInstance() {
-    ModelImpl& factory1 = ModelImpl::getInstance();
-    ModelImpl& factory2 = ModelImpl::getInstance();
-    assert(&factory1 == &factory2);
-}
-*/
 
 void unit_Model::testModelSimulate() {
     Model *model1 = model1->createModel();

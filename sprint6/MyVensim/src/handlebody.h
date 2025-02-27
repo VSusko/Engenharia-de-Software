@@ -9,15 +9,13 @@
 #if ! defined( HANDLE_BODY )
 #define HANDLE_BODY
 
-#define DEBUGING TRUE
+#define DEBUGING
 #ifdef DEBUGING
     extern int numHandleCreated;
-    extern int numHandleDeleted;
-    extern int numBodyCreated;
-    extern int numBodyDeleted;
+	extern int numHandleDeleted;
+	extern int numBodyCreated;
+	extern int numBodyDeleted;
 #endif
-
-
 
 /** 
  * \brief

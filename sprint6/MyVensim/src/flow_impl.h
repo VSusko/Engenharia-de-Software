@@ -13,7 +13,6 @@ class FlowBody : public Body
 {
     friend class unit_Flow;
     friend class FlowUTest;
-    friend class ModelFactory;
     
     protected:
         string name;    /**< Flow name */

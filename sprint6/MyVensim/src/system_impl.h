@@ -14,7 +14,6 @@
 class SystemBody : public Body
 {
     friend class unit_System;
-    friend class ModelFactory;
 
     private:
         string name;  /**< Name of the system */
