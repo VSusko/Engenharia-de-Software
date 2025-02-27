@@ -2,7 +2,7 @@
 #define UNIT_TEST_H
 
 #include "../../src/model_impl.h"
-
+#include "../../src/handlebody.h"
 #include <cassert>
 #include <cmath>
 #include <sstream>
@@ -13,15 +13,13 @@
  * 
  * 
  */
-class FlowUTest : public FlowImpl {
+class FlowUTest : public FlowHandle {
     public:
         FlowUTest() {}
-        FlowUTest(string name, System* source, System* target)
-            : FlowImpl(name, source, target) {}
-    
-        virtual double execute() override { 
+        FlowUTest(string name, System* source, System* target) : FlowHandle(name, source, target){}
+        double execute(){ 
             return (getSource()->getValue() * 0);
-        }
+        };
     };
     
 

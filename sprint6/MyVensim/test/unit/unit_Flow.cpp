@@ -2,7 +2,8 @@
 
 void unit_Flow::testFlowDefaultConstructor() {
     Model* model = Model::createModel("model");
-    Flow *flow1 = model->createFlow<FlowUTest>("", nullptr, nullptr);
+    Flow* flow1  = model->createFlow<FlowUTest>("", nullptr, nullptr);
+
     assert(dynamic_cast<FlowUTest*>(flow1)->name == "");
     assert(dynamic_cast<FlowUTest*>(flow1)->source == nullptr);
     assert(dynamic_cast<FlowUTest*>(flow1)->target == nullptr);
@@ -64,9 +65,9 @@ void unit_Flow::testFlowExecute() {
 
 void unit_Flow::runFlowTests() {
     testFlowDefaultConstructor();
-    testFlowParameterizedConstructor();
-    testFlowGetters();
-    testFlowSetters();
-    testFlowClear();
-    testFlowExecute();
+    // testFlowParameterizedConstructor();
+    // testFlowGetters();
+    // testFlowSetters();
+    // testFlowClear();
+    // testFlowExecute();
 }

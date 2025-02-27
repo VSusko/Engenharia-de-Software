@@ -31,8 +31,6 @@ class Model
          */
         virtual void setName(string string) = 0;
 
-        //static ModelImpl& getInstance() = 0;
-
         /**
          * @brief Gets the name of the model
          * 
@@ -63,7 +61,7 @@ class Model
          * 
          * Searches for a flow in the model by its name.
          * 
-         * @param _name Name of the flow to search for
+         * @param name Name of the flow to search for
          * @return Pointer to the flow if found, nullptr otherwise
          */
         virtual Flow* getFlow(const string name) const = 0;

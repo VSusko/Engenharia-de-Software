@@ -36,10 +36,10 @@ class FlowBody : public Body
          * @brief Constructor with name and two systems
          * 
          * @param name Name of the flow
-         * @param _source Pointer to the source system
-         * @param _target Pointer to the target system
+         * @param source Pointer to the source system
+         * @param target Pointer to the target system
          */
-        FlowBody(string _name, System* _source, System* _target);
+        FlowBody(string name, System* source, System* target);
 
         /**
          * @brief Copy constructor
@@ -82,30 +82,30 @@ class FlowBody : public Body
         /**
          * @brief Sets the name of the flow
          * 
-         * @param _string Name of the flow
+         * @param string Name of the flow
          */
-        void setName(string _name);
+        void setName(const string name);
 
         /**
          * @brief Gets the target system of the flow
          * 
          * @return Pointer to the target system
          */
-        System* getTarget() const;
+        System* getTarget();
         
         /**
          * @brief Gets the source system of the flow
          * 
          * @return Pointer to the source system
          */  
-        System* getSource() const;
+        System* getSource();
 
         /**
          * @brief Gets the name of the flow
          * 
          * @return Name of the flow
          */
-        string getName() const;
+        string getName();
         
         //===================Class functions===================//
         
@@ -140,7 +140,7 @@ class FlowHandle : public Flow, public Handle<FlowBody>
             pImpl_->setTarget(target);
         };
 
-        void setName(const string& name) { pImpl_->setName(name);      }
+        void setName(const string name)  { pImpl_->setName(name);      }
         void setSource(System* s)        { pImpl_->setSource(s);       }
         void setTarget(System* s)        { pImpl_->setTarget(s);       }
         System* getTarget()              { return pImpl_->getTarget(); }

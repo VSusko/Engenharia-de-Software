@@ -40,7 +40,7 @@ class Flow
         /**
          * @brief Sets the name of the flow
          * 
-         * @param _string Name of the flow
+         * @param string Name of the flow
          */
         virtual void setName(string string) = 0;
 
@@ -49,21 +49,21 @@ class Flow
          * 
          * @return Pointer to the target system
          */
-        virtual System* getTarget() const = 0;
+        virtual System* getTarget() = 0;
 
         /**
          * @brief Gets the source system of the flow
          * 
          * @return Pointer to the source system
          */ 
-        virtual System* getSource() const = 0;
+        virtual System* getSource() = 0;
 
         /**
          * @brief Gets the name of the flow
          * 
          * @return Name of the flow
          */
-        virtual string getName() const = 0;
+        virtual string getName() = 0;
 
         
         //===================Class functions===================//

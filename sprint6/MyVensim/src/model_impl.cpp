@@ -43,17 +43,9 @@ ModelImpl ModelImpl::operator=(const ModelImpl &other)
 
 //===================Getters and Setters===================//
 
-void ModelImpl::setName(const string name) { this->name = name; }
-
-/*
-static ModelImpl& getInstance() {
-    static ModelImpl instance;
-    return instance;
-}
-*/
-
-string ModelImpl::getName() const { return this->name; }
-double ModelImpl::getClock() const { return this->clock; }
+void ModelImpl::setName(const string name)  { this->name = name; }
+string ModelImpl::getName() const           { return this->name; }
+double ModelImpl::getClock() const          { return this->clock; }
 
 System* ModelImpl::getSystem(const string name) const
 {
@@ -173,18 +165,6 @@ Model* ModelImpl::createModel(const string name) {
 Model* Model::createModel(const string name) {
     return ModelImpl::createModel(name);
 }
-
-// Model* ModelImpl::createModel(const string name)
-// {
-//     Model* model = new ModelHandle(name);
-//     models.push_back(model);
-//     return model;
-// }
-
-// Model* Model::createModel(const string name)
-// {
-//     return ModelImpl::createModel(name);
-// }
 
 System* ModelImpl::createSystem(string name, double value)
 {

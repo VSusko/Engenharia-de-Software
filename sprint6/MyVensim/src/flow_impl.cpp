@@ -39,10 +39,10 @@ FlowBody& FlowBody::operator=(const FlowBody &other)
 
 void FlowBody::setTarget(System* s) { target = s; }
 void FlowBody::setSource(System* s) { source = s; }
-void FlowBody::setName(string name) { this->name = name; }
-System* FlowBody::getSource() const { return source; }
-System* FlowBody::getTarget() const { return target; }
-string  FlowBody::getName() const   { return name; }
+void FlowBody::setName(const string name) { this->name = name; }
+System* FlowBody::getSource()  { return source; }
+System* FlowBody::getTarget()  { return target; }
+string  FlowBody::getName()    { return name; }
 
 //===================Class functions===================//
 
