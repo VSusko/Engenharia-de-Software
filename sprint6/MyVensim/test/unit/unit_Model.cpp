@@ -2,6 +2,7 @@
 
 void unit_Model::testModelDefaultConstructor() {
     Model *model1 = ModelImpl::createModel("");
+    cout << "Model name: " << dynamic_cast<ModelImpl*>(model1)->name << endl;
     assert(dynamic_cast<ModelImpl*>(model1)->name == "");
 }
 

@@ -10,7 +10,6 @@ int main()
     unit_System unit_system;
     unit_Flow unit_flow;
     unit_Model unit_model;
-    
     unit_system.runSystemTests();
     cout << "System test: OK" << endl;
 

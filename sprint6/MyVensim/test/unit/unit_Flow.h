@@ -83,6 +83,9 @@ class unit_Flow
          * This test is going to calculate an expression made by user and approve whether it works or not
          */
         void testFlowExecute();
+        
+        
+        void testHandleBodyMechanism();
 
         /**
          * @brief Runs all tests for the Flow class.

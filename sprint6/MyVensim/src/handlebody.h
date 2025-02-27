@@ -9,6 +9,16 @@
 #if ! defined( HANDLE_BODY )
 #define HANDLE_BODY
 
+#define DEBUGING TRUE
+#ifdef DEBUGING
+    extern int numHandleCreated;
+    extern int numHandleDeleted;
+    extern int numBodyCreated;
+    extern int numBodyDeleted;
+#endif
+
+
+
 /** 
  * \brief
  *
@@ -23,13 +33,23 @@ class Handle
 public:	
 
 	/// constructor
-	Handle<T>( ){  
+	Handle<T>( )
+	{  
 		pImpl_ = new T; 
-        pImpl_->attach();  
+        pImpl_->attach();
+		#ifdef DEBUGING
+			numHandleCreated++;
+		#endif	
 	}
 	
 	/// Destructor
-	virtual ~Handle<T>(){ pImpl_->detach(); 	}
+	virtual ~Handle<T>()
+	{ 
+		pImpl_->detach();
+		#ifdef DEBUGING
+			numHandleDeleted++;
+		#endif
+	}
 
 	/// copy constructor 
 	Handle<T>( const Handle& hd ):pImpl_( hd.pImpl_ ) { pImpl_->attach();  }
@@ -61,7 +81,12 @@ class Body
 {	
 public:
 	/// Constructor: zero references when the object is being built
-	Body(): refCount_ ( 0 ){  }
+	Body(): refCount_ ( 0 )
+	{ 
+		#ifdef DEBUGING		
+			numBodyCreated++;
+		#endif
+	}
 	
 
 	/// Increases the number of references to this object
@@ -69,11 +94,16 @@ public:
 
 	/// Decreases the number of references to this object.
 	/// Destroy it if there are no more references to it
-	void detach (){	
-		if ( --refCount_ == 0 )	{ 
-			delete this; 
+	void detach() {	
+		if (--refCount_ == 0) { 
+			#ifdef DEBUGING		
+				numBodyDeleted++;  // Conta ANTES de deletar
+			#endif
+
+			delete this;
 		}
 	}
+	
 
 	/// Returns the number of references to this object
 	int refCount(){ return refCount_; }

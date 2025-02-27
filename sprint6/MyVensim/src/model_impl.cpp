@@ -159,6 +159,7 @@ Model* ModelImpl::createModel(const string name) {
     if (instance == nullptr) {
         instance = new ModelImpl(name);
     }
+    cout << "AYUDA SOY VENEZULANO" << endl;
     return instance;
 }
 
